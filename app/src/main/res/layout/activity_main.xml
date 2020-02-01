@@ -6,15 +6,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        android:background="@drawable/main_background">
+
             <LinearLayout
                 android:layout_width="match_parent" android:layout_height="match_parent"
                 android:layout_marginTop="20pt"
                 android:layout_marginHorizontal="20dp"
                 android:orientation="vertical">
                 <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/round_edit_text"
+                        android:elevation="3dp"
+                        android:layout_marginLeft="3dp">
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingVertical="10dp"
                     >
                     <View android:layout_width="0dp"
                             android:layout_height="fill_parent"
@@ -36,7 +46,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/balance"
-                            android:textSize="10pt"/>
+                            android:textSize="10pt"
+                            android:layout_marginLeft="20dp"/>
                     <View android:layout_width="0dp"
                             android:layout_height="fill_parent"
                             android:layout_weight="1" />
@@ -49,13 +60,13 @@
                             android:layout_height="wrap_content"
                             android:textSize="10pt"
                             android:id="@+id/userBalance"
-                            android:text="10.000"/>
+                            android:text="10.000"
+                            android:layout_marginRight="20dp"/>
                 </LinearLayout>
                 <LinearLayout
                      android:layout_width="match_parent"
                      android:layout_height="wrap_content"
                      android:layout_marginVertical="10pt">
-
                     <View android:layout_width="0dp"
                             android:layout_height="fill_parent"
                             android:layout_weight="1" />
@@ -105,9 +116,12 @@
                                 android:layout_height="30pt"
                                 android:src="@drawable/ic_stars_black_24dp"/>
                     </LinearLayout>
-                    <View android:layout_width="0dp"
+
+                    <View
+                            android:layout_width="0dp"
                             android:layout_height="fill_parent"
                             android:layout_weight="1" />
+                </LinearLayout>
                 </LinearLayout>
                 <TextView
                         android:layout_marginTop="10pt"
