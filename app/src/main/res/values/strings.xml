@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Launch Box</string>
+    <string name="app_jargon">Kalo Laper Ngapain di Tahan</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Register">Register</string>
+    <string name="Login">Login</string>
+    <string name="RegisterToLogin">Sudah Punya Akun? Login Sekarang</string>
+    <string name="LoginToRegister">Belum Memliki Akun? Buat Yang Akunmu Sekarang</string>
+    <string name="ButtonRegister">Register Sekarang</string>
+    <string name="ButtonLogin">Login Sekarang</string>
+    <string name="ButtonOrder">Order Sekarang</string>
+    <string name="balance">Saldo</string>
+    <string name="IDRCurrency">Rp</string>
+    <string name="TopUpBalance">Top Up</string>
+    <string name="History">Aktivitas</string>
+    <string name="Rewards">Promo</string>
+    <string name="FavouriteMenu">Menu Paling Laris Minggu Ini</string>
+</resources>

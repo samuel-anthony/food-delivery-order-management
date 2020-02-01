@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".login">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:layout_centerVertical="true"
+                      android:layout_centerHorizontal="true"
+                      android:orientation="vertical"
+        >
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Login"
+                    android:textSize="10pt"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="10dp"
+            />
+            <EditText android:layout_width="250dp" android:layout_height="20pt"
+                      android:layout_gravity="center"
+                      android:id="@+id/usernameLogin"
+                      android:hint="username/phone number"
+                      android:layout_marginVertical="10dp"
+            />
+            <EditText android:layout_width="250dp" android:layout_height="20pt"
+                      android:layout_gravity="center"
+                      android:id="@+id/passwordLogin"
+                      android:hint="password"
+                      android:inputType="textPassword"
+                      android:layout_marginVertical="10dp"
+            />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="5pt"
+                      android:text="@string/LoginToRegister"
+                      android:id="@+id/fragmentLoginToRegister"
+                      android:layout_gravity="center_horizontal"
+                      android:onClick="changeFragment"
+                      android:clickable="true"
+            />
+            <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@string/ButtonLogin"
+                    android:layout_gravity="bottom"
+                    android:textAllCaps="false"
+                    android:id="@+id/buttonLogin"
+                    android:onClick="changeFragment"
+            />
+
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>
