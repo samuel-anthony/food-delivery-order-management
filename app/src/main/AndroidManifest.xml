@@ -9,7 +9,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".orderEntry"></activity>
+        <activity android:name=".adminMainActivity"></activity>
+        <activity android:name=".orderEntry" />
         <activity android:name=".topUpEntry" />
         <activity android:name=".splash_screen">
             <intent-filter>
