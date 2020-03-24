@@ -1,0 +1,7 @@
+
+<declare-styleable name="CustomEditText">
+    <attr name="edittextfont" format="string" />
+    <attr name="edittextfontHint" format="string" />
+    <attr name="edittextpwd" format="string" />
+    <attr name="editcharpwd" format="string" />
+</declare-styleable>
