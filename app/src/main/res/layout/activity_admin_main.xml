@@ -1,9 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".adminMainActivity">
+        tools:context=".adminMainActivity"
+        android:background="@drawable/bg_login">
+        <LinearLayout
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:layout_marginTop="20pt"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pacifico"
+                    android:textSize="15pt"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="10dp"
+                    android:textColor="@color/white"
+                    android:shadowColor="@color/black"
+                    android:text="@string/AdminPage"/>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/round_edit_text"
+                    android:elevation="6dp"
+                    android:id="@+id/buttonChangeMenuProduct"
+                    android:onClick="changeMenu">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/pacifico"
+                            android:textSize="10pt"
+                            android:layout_gravity="center"
+                            android:layout_marginVertical="10dp"
+                            android:textColor="@color/black"
+                            android:text="@string/AdminCustomMenu"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/round_edit_text"
+                    android:elevation="6dp">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pacifico"
+                        android:textSize="10pt"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="10dp"
+                        android:textColor="@color/black"
+                        android:text="@string/AdminCustomMenu"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/round_edit_text"
+                    android:elevation="6dp">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pacifico"
+                        android:textSize="10pt"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="10dp"
+                        android:textColor="@color/black"
+                        android:text="@string/AdminCustomMenu"/>
+            </LinearLayout>
+
+        </LinearLayout>
+</RelativeLayout>

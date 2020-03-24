@@ -16,4 +16,7 @@
     <string name="History">Aktivitas</string>
     <string name="Rewards">Promo</string>
     <string name="FavouriteMenu">Menu Paling Laris Minggu Ini</string>
+    <string name="AdminPage">Halaman Admin</string>
+    <string name="AdminCustomMenu">Atur Menu</string>
+    <string name="AdminCustomMenuAddMaster">Tambah Menu Baru</string>
 </resources>
