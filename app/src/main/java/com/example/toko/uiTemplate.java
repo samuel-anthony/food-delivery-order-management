@@ -57,6 +57,50 @@ public class uiTemplate {
         return textView;
     }
 
+    public EditText createEditText(int width,int height,float layoutWeight,int backgroundId,int fontId,float textSize, int hint,int left, int top, int right, int bottom){
+        EditText editText = new EditText(context);
+        LinearLayout.LayoutParams layoutParams;
+        float density = context.getResources().getDisplayMetrics().density;
+        if(width==0 ||height ==0){
+            layoutParams = new LinearLayout.LayoutParams(width,height,layoutWeight);
+        }
+        else{
+            layoutParams = new LinearLayout.LayoutParams(width,height);
+        }
+
+        left = (int)(left * density);
+        top = (int)(top * density);
+        right = (int)(right * density);
+        bottom = (int)(bottom * density);
+        layoutParams.setMargins(left, top, right, bottom);
+        editText.setLayoutParams(layoutParams);
+        if(backgroundId!=-1) {
+            editText.setBackgroundResource(backgroundId);
+            int paddingDp = 10;
+            int paddingPixel = (int)(paddingDp * density);
+
+            editText.setPadding(paddingPixel,0,0,0);
+        }
+        if(fontId!=-1){
+            Typeface face = ResourcesCompat.getFont(context, fontId);
+            editText.setTypeface(face);
+        }
+        if(textSize != -1f)
+            editText.setTextSize(textSize);
+        if(hint !=-1){
+            editText.setHint(hint);
+        }
+        return editText;
+    }
+
+    public ImageView createImageViewOnLinear(int drawableID, int width, int height,int left, int top, int right, int bottom){
+        ImageView imageView = new ImageView(context);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width,height);
+        layoutParams.setMargins(left, top, right, bottom);
+        imageView.setLayoutParams(layoutParams);
+        imageView.setImageResource(drawableID);
+        return imageView;
+    }
     public RadioGroup createRadioGroup(int width, int height,int id ,int left, int top, int right, int bottom){
         RadioGroup radioGroup = new RadioGroup(context);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width,height);

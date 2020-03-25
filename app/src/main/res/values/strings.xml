@@ -10,6 +10,7 @@
     <string name="ButtonRegister">Register Sekarang</string>
     <string name="ButtonLogin">Login Sekarang</string>
     <string name="ButtonOrder">Order Sekarang</string>
+    <string name="ButtonSave">Simpan</string>
     <string name="balance">Saldo</string>
     <string name="IDRCurrency">Rp</string>
     <string name="TopUpBalance">Top Up</string>

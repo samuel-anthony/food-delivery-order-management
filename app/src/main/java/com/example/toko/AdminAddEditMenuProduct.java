@@ -16,8 +16,9 @@ public class AdminAddEditMenuProduct extends AppCompatActivity {
     public void addNewProduct(View view){
         if(view == findViewById(R.id.addMenuProductText)||view == findViewById(R.id.addMenuProductButton)) {
             Intent mainActivity = null;
-            mainActivity = new Intent(this, AdminAddEditMenuProduct.class);
+            mainActivity = new Intent(this, AdminAddMenuProduct.class);
             startActivity(mainActivity);
+            finish();
         }
     }
 }

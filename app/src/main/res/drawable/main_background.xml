@@ -11,7 +11,7 @@
                 android:angle="-135"
                 />
     </shape>
-</item>
+    </item>
     <item android:top="150dp">
     <shape >
         <solid android:color="@color/white"/>
