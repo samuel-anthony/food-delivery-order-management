@@ -20,6 +20,7 @@
     <string name="AdminPage">Halaman Admin</string>
     <string name="AdminCustomMenu">Atur Menu</string>
     <string name="AdminCustomMenuAddMaster">Tambah Menu Baru</string>
+    <string name="AdminCustomMenuEditMaster">Ubah Menu</string>
     <string name="AdminCustomMenuNameProductMaster">Nama Kategori</string>
     <string name="AdminCustomMenuNameListProductDetail">List Produk</string>
     <string name="AdminCustomMenuNameListProductDetailName">Nama Produk</string>
