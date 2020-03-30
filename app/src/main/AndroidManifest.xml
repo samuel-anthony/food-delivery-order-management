@@ -12,7 +12,9 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".AdminEditMenuProduct"></activity>
+        <activity android:name=".AdminAddMenuCombo"></activity>
+        <activity android:name=".AdminAddEditMenuCombo" />
+        <activity android:name=".AdminEditMenuProduct" />
         <activity android:name=".CustomEditText" />
         <activity android:name=".AdminAddMenuProduct" />
         <activity android:name=".AdminAddEditMenuProduct" />

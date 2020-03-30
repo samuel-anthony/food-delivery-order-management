@@ -14,9 +14,13 @@ public class adminMainActivity extends AppCompatActivity {
     }
 
     public void changeMenu(View view) {
+        Intent mainActivity = null;
         if(view == findViewById(R.id.buttonChangeMenuProduct)) {
-            Intent mainActivity = null;
             mainActivity = new Intent(this, AdminAddEditMenuProduct.class);
+            startActivity(mainActivity);
+        }
+        else if(view == findViewById(R.id.buttonChangeMenuCombo)) {
+            mainActivity = new Intent(this, AdminAddEditMenuCombo.class);
             startActivity(mainActivity);
         }
     }

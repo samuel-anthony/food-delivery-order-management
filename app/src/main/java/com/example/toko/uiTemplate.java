@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.support.v4.content.res.ResourcesCompat;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -54,6 +55,15 @@ public class uiTemplate {
             Typeface face = ResourcesCompat.getFont(context, id);
             textView.setTypeface(face);
         }
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+        float density = context.getResources().getDisplayMetrics().density;
+        int left = (int)(10 * density);
+        int top = (int)(5 * density);
+        int right = (int)(10 * density);
+        int bottom = (int)(5 * density);
+        layoutParams.setMargins(left, top, right, bottom);
+        textView.setLayoutParams(layoutParams);
+
         return textView;
     }
 
