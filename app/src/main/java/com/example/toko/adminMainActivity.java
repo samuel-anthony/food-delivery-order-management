@@ -19,9 +19,9 @@ public class adminMainActivity extends AppCompatActivity {
             mainActivity = new Intent(this, AdminAddEditMenuProduct.class);
             startActivity(mainActivity);
         }
-        else if(view == findViewById(R.id.buttonChangeMenuCombo)) {
-            mainActivity = new Intent(this, AdminAddEditMenuCombo.class);
-            startActivity(mainActivity);
-        }
+//        else if(view == findViewById(R.id.buttonChangeMenuCombo)) {
+//            mainActivity = new Intent(this, AdminAddEditMenuCombo.class);
+//            startActivity(mainActivity);
+//        }
     }
 }

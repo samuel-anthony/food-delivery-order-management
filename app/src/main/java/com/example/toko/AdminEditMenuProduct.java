@@ -70,10 +70,7 @@ public class AdminEditMenuProduct extends AppCompatActivity {
                         JSONObject jo = resultList.getJSONObject(i);
                         LinearLayout param1 = uiTemplate.createLinearLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT,12f,10f,false,false,0,10,0,0);
                         EditText editTextNamaProduk = uiTemplate.createEditText(0,LinearLayout.LayoutParams.WRAP_CONTENT,4.5f,R.drawable.round_edit_text_black,R.font.pacifico,15f,R.string.AdminCustomMenuNameListProductDetailName,10,0,0,0);
-                        EditText editTextHargaProduk = uiTemplate.createEditText(0,LinearLayout.LayoutParams.WRAP_CONTENT,4.5f,R.drawable.round_edit_text_black,R.font.pacifico,15f,R.string.AdminCustomMenuNameListProductDetailPrice,0,0,0,0);
-                        editTextHargaProduk.setInputType(InputType.TYPE_CLASS_NUMBER);
                         editTextNamaProduk.setText(jo.getString("nama_produk_detail"));
-                        editTextHargaProduk.setText(jo.getString("harga_produk"));
                         ImageView buttonRemove = uiTemplate.createImageViewOnLinear(R.drawable.ic_do_not_disturb_on_black_24dp,LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT, 10,0,0,0);
                         buttonRemove.setOnClickListener(new View.OnClickListener()
                         {
@@ -83,8 +80,27 @@ public class AdminEditMenuProduct extends AppCompatActivity {
                                 ((ViewGroup)v.getParent().getParent()).removeView((ViewGroup)v.getParent());
                             }
                         });
+                        LinearLayout container = uiTemplate.createLinearLayout(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,10f,10f,false,false,10,0,10,0);
+                        container.setBackgroundResource(R.drawable.round_edit_text_black);
+                        String hideUnhide = "Unhide";
+                        if(jo.getString("is_available").equalsIgnoreCase("1")){
+                            hideUnhide = "Hide";
+                        }
+                        final TextView textView = uiTemplate.createTextViewWithoutMargins(hideUnhide,R.font.pacifico);
+                        container.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                if(textView.getText().toString().equalsIgnoreCase("hide"))
+                                    textView.setText("Unhide");
+                                else
+                                    textView.setText("Hide");
+                            }
+                        });
+                        container.addView(textView);
                         param1.addView(editTextNamaProduk);
-                        param1.addView(editTextHargaProduk);
+                        param1.addView(container);
                         param1.addView(buttonRemove);
                         if(i == 0)
                             buttonRemove.setVisibility(View.INVISIBLE);
@@ -112,8 +128,20 @@ public class AdminEditMenuProduct extends AppCompatActivity {
     public void addMoreMenu(View view){
         LinearLayout param1 = uiTemplate.createLinearLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT,12f,10f,false,false,0,10,0,0);
         EditText editTextNamaProduk = uiTemplate.createEditText(0,LinearLayout.LayoutParams.WRAP_CONTENT,4.5f,R.drawable.round_edit_text_black,R.font.pacifico,15f,R.string.AdminCustomMenuNameListProductDetailName,10,0,0,0);
-        EditText editTextHargaProduk = uiTemplate.createEditText(0,LinearLayout.LayoutParams.WRAP_CONTENT,4.5f,R.drawable.round_edit_text_black,R.font.pacifico,15f,R.string.AdminCustomMenuNameListProductDetailPrice,0,0,0,0);
-        editTextHargaProduk.setInputType(InputType.TYPE_CLASS_NUMBER);
+        LinearLayout container = uiTemplate.createLinearLayout(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,10f,10f,false,false,10,0,10,0);
+        container.setBackgroundResource(R.drawable.round_edit_text_black);
+        final TextView textView = uiTemplate.createTextViewWithoutMargins("Hide",R.font.pacifico);
+        container.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if(textView.getText().toString().equalsIgnoreCase("hide"))
+                    textView.setText("Unhide");
+                else
+                    textView.setText("Hide");
+            }
+        });
         ImageView buttonRemove = uiTemplate.createImageViewOnLinear(R.drawable.ic_do_not_disturb_on_black_24dp,LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT, 10,0,0,0);
         buttonRemove.setOnClickListener(new View.OnClickListener()
         {
@@ -123,8 +151,9 @@ public class AdminEditMenuProduct extends AppCompatActivity {
                 ((ViewGroup)v.getParent().getParent()).removeView((ViewGroup)v.getParent());
             }
         });
+        container.addView(textView);
         param1.addView(editTextNamaProduk);
-        param1.addView(editTextHargaProduk);
+        param1.addView(container);
         param1.addView(buttonRemove);
         scrollViewDaftarProduk.addView(param1);
     }
@@ -150,25 +179,21 @@ public class AdminEditMenuProduct extends AppCompatActivity {
             final View child = scrollViewDaftarProduk.getChildAt(i);
             if(is_no_error){
                 if (child instanceof LinearLayout) {
-                    int editTextFound = 0;
                     HashMap<String,String> map = new HashMap<>();
                     for(int j = 0; j <((LinearLayout) child).getChildCount();j++){
                         final View childOfChild = ((LinearLayout)child).getChildAt(j);
                         if(childOfChild instanceof EditText){
                             String content = ((EditText)childOfChild).getText().toString();
                             if(!content.isEmpty()){
-                                if(editTextFound==0){
-                                    map.put("nama_produk",content);
-                                }
-                                else{
-                                    map.put("harga_produk",content);
-                                }
+                                map.put("nama_produk",content);
                             }
                             else{
                                 is_no_error = false;
                                 break;
                             }
-                            editTextFound++;
+                        }else if(childOfChild instanceof LinearLayout){
+                            TextView childOfChildOfChild = (TextView)((LinearLayout)childOfChild).getChildAt(0);
+                            map.put("is_available",childOfChildOfChild.getText().toString().equalsIgnoreCase("hide") ? "1" : "0");
                         }
                     }
                     listProduct.add(map);
@@ -187,9 +212,9 @@ public class AdminEditMenuProduct extends AppCompatActivity {
             HashMap obj = a.get(i);
             returningString += obj.get("nama_produk")+",";
             if(a.size()==i+1)
-                returningString += obj.get("harga_produk");
+                returningString += obj.get("is_available");
             else
-                returningString += obj.get("harga_produk")+";";
+                returningString += obj.get("is_available")+";";
         }
         return returningString;
     }

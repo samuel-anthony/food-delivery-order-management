@@ -67,6 +67,25 @@ public class uiTemplate {
         return textView;
     }
 
+    public TextView createTextViewWithoutMargins(String textContent,int id){
+        TextView textView = new TextView(context);
+        textView.setText(textContent);
+        if(id != -1){
+            Typeface face = ResourcesCompat.getFont(context, id);
+            textView.setTypeface(face);
+        }
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+        float density = context.getResources().getDisplayMetrics().density;
+        int left = (int)(10 * density);
+        int top = (int)(0 * density);
+        int right = (int)(15 * density);
+        int bottom = (int)(0 * density);
+        layoutParams.setMargins(left, top, right, bottom);
+        textView.setLayoutParams(layoutParams);
+
+        return textView;
+    }
+
     public EditText createEditText(int width,int height,float layoutWeight,int backgroundId,int fontId,float textSize, int hint,int left, int top, int right, int bottom){
         EditText editText = new EditText(context);
         LinearLayout.LayoutParams layoutParams;
