@@ -41,27 +41,28 @@
                             android:layout_marginVertical="10dp"
                             android:textColor="@color/black"
                             android:text="@string/AdminCustomMenu"/>
+
             </LinearLayout>
-<!--            <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_marginLeft="3dp"-->
-<!--                    android:layout_marginVertical="10dp"-->
-<!--                    android:background="@drawable/round_edit_text"-->
-<!--                    android:elevation="6dp"-->
-<!--                    android:id="@+id/buttonChangeMenuCombo"-->
-<!--                    android:onClick="changeMenu">-->
-<!--                <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:fontFamily="@font/pacifico"-->
-<!--                        android:textSize="10pt"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:layout_marginVertical="10dp"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:text="@string/AdminCustomCombo"/>-->
-<!--            </LinearLayout>-->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/round_edit_text"
+                    android:elevation="6dp"
+                    android:id="@+id/buttonChangeMenuPrice"
+                    android:onClick="changeMenu">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pacifico"
+                        android:textSize="10pt"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="10dp"
+                        android:textColor="@color/black"
+                        android:text="@string/AdminCustomSetHarga"/>
+            </LinearLayout>
 
         </LinearLayout>
 </RelativeLayout>

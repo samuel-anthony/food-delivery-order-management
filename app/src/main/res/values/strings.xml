@@ -10,12 +10,15 @@
     <string name="ButtonRegister">Register Sekarang</string>
     <string name="ButtonLogin">Login Sekarang</string>
     <string name="ButtonOrder">Order Sekarang</string>
+    <string name="ButtonOrderMore">Tambah Order</string>
     <string name="ButtonSave">Simpan</string>
     <string name="balance">Saldo</string>
     <string name="IDRCurrency">Rp</string>
     <string name="TopUpBalance">Top Up</string>
     <string name="History">Aktivitas</string>
     <string name="Rewards">Promo</string>
+    <string name="profileMenu">Profile</string>
+    <string name="phoneNumber">Nomor Telepon</string>
     <string name="FavouriteMenu">Menu Paling Laris Minggu Ini</string>
     <string name="AdminPage">Halaman Admin</string>
     <string name="AdminCustomMenu">Atur Menu</string>
@@ -30,4 +33,9 @@
     <string name="AdminCustomMenuAddCombo">Tambah Kombinasi Menu Baru</string>
     <string name="AdminCustomMenuAddComboMaster">Nama Combo/Paket</string>
     <string name="AdminCustomMenuNameListCombo">List Produk Yang Akan Disimpan</string>
+    <string name="AdminCustomSetHarga">Atur Harga Per Box</string>
+    <string name="AdminSetHarga">Harga Per Box</string>
+
+    <string name="ListOrder">List Order</string>
+    <string name="Total">Total</string>
 </resources>

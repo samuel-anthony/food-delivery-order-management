@@ -5,13 +5,13 @@
         <layer-list>
             <!-- SHADOW LAYER -->
             <!-- CONTENT LAYER -->
-            <item android:bottom="4dp" android:right="4dp">
+            <item>
                 <shape>
                     <solid android:color="#FFF" />
                     <stroke
                             android:width="2.3dp"
                             android:color="@color/black" />
-                    <corners android:radius="20dip"/>
+                    <corners android:radius="5dp"/>
                 </shape>
             </item>
         </layer-list>
