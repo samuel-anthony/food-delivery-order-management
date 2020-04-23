@@ -67,7 +67,8 @@
                         android:text="@string/ButtonOrder"
                         android:id="@+id/buttonOrder"
                         android:background="@drawable/round_edit_text_black"
-                        android:layout_marginBottom="20dp"/>
+                        android:layout_marginBottom="20dp"
+                        android:onClick="changeMenu"/>
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

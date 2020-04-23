@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -14,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,6 +29,7 @@ public class AdminEditMenuProduct extends AppCompatActivity {
     String master_id,category_name;//category id
     EditText namaKategori;
     LinearLayout scrollViewDaftarProduk;
+    int idBoongan = 10000;
     ArrayList<HashMap<String,String>> listProduct = new ArrayList<HashMap<String,String>>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +73,7 @@ public class AdminEditMenuProduct extends AppCompatActivity {
                         LinearLayout param1 = uiTemplate.createLinearLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT,12f,10f,false,false,0,10,0,0);
                         EditText editTextNamaProduk = uiTemplate.createEditText(0,LinearLayout.LayoutParams.WRAP_CONTENT,4.5f,R.drawable.round_edit_text_black,R.font.pacifico,15f,R.string.AdminCustomMenuNameListProductDetailName,10,0,0,0);
                         editTextNamaProduk.setText(jo.getString("nama_produk_detail"));
+                        editTextNamaProduk.setId(Integer.parseInt(jo.getString("id")));
                         ImageView buttonRemove = uiTemplate.createImageViewOnLinear(R.drawable.ic_do_not_disturb_on_black_24dp,LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT, 10,0,0,0);
                         buttonRemove.setOnClickListener(new View.OnClickListener()
                         {
@@ -128,6 +131,7 @@ public class AdminEditMenuProduct extends AppCompatActivity {
     public void addMoreMenu(View view){
         LinearLayout param1 = uiTemplate.createLinearLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT,12f,10f,false,false,0,10,0,0);
         EditText editTextNamaProduk = uiTemplate.createEditText(0,LinearLayout.LayoutParams.WRAP_CONTENT,4.5f,R.drawable.round_edit_text_black,R.font.pacifico,15f,R.string.AdminCustomMenuNameListProductDetailName,10,0,0,0);
+        editTextNamaProduk.setId(idBoongan);
         LinearLayout container = uiTemplate.createLinearLayout(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,10f,10f,false,false,10,0,10,0);
         container.setBackgroundResource(R.drawable.round_edit_text_black);
         final TextView textView = uiTemplate.createTextViewWithoutMargins("Hide",R.font.pacifico);
@@ -156,6 +160,7 @@ public class AdminEditMenuProduct extends AppCompatActivity {
         param1.addView(container);
         param1.addView(buttonRemove);
         scrollViewDaftarProduk.addView(param1);
+        idBoongan++;
     }
     public void buttonSave(View view){
         if(checkContent()){
@@ -186,6 +191,7 @@ public class AdminEditMenuProduct extends AppCompatActivity {
                             String content = ((EditText)childOfChild).getText().toString();
                             if(!content.isEmpty()){
                                 map.put("nama_produk",content);
+                                map.put("id",String.valueOf(childOfChild.getId()));
                             }
                             else{
                                 is_no_error = false;
@@ -210,7 +216,7 @@ public class AdminEditMenuProduct extends AppCompatActivity {
         String returningString = "";
         for(int i = 0; i < a.size(); i++){
             HashMap obj = a.get(i);
-            returningString += obj.get("nama_produk")+",";
+            returningString += obj.get("id")+","+obj.get("nama_produk")+",";
             if(a.size()==i+1)
                 returningString += obj.get("is_available");
             else

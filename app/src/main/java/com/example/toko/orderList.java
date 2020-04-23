@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -12,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,13 +27,21 @@ public class orderList extends AppCompatActivity {
     uiTemplate uiTemplate;
     ArrayList<HashMap<String,String>> pesanan = new ArrayList<HashMap<String,String>>();
     Bundle bundle;
+    JSONObject data_user;
     LinearLayout listOrder;
+    int harga,barang;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_list);
         bundle = getIntent().getExtras();
         pesanan = (ArrayList<HashMap<String,String>>) bundle.getSerializable("order");
+        try {
+            data_user = new JSONObject(bundle.getString("user_data"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         uiTemplate = new uiTemplate(this);
         listOrder = findViewById(R.id.listOrder);
         changeArrayListToUI();
@@ -54,14 +64,29 @@ public class orderList extends AppCompatActivity {
             listOrder.addView(container);
         }
     }
-
     public void changeMenu(View v){
         if(v==findViewById(R.id.buttonOrderMore)){
             Intent newActivity;
             newActivity = new Intent(this, orderEntry.class);
             newActivity.putExtra("order",(Serializable) pesanan);
+            newActivity.putExtra("user_data",bundle.getString("user_data"));
             startActivity(newActivity);
             finish();
+        }
+        else{
+            barang = 0;
+            for(int i = 0; i < pesanan.size() ; i++) {
+                barang += Integer.parseInt(pesanan.get(i).get("total"));
+            }
+            if(barang>0){
+                Intent newActivity;
+                newActivity = new Intent(this, orderPayment.class);
+                newActivity.putExtra("order",(Serializable) pesanan);
+                newActivity.putExtra("total",String.valueOf(harga*barang));
+                newActivity.putExtra("user_data",bundle.getString("user_data"));
+                startActivity(newActivity);
+                finish();
+            }
         }
     }
 
@@ -87,7 +112,7 @@ public class orderList extends AppCompatActivity {
                 loading.dismiss();
                 try {
                     JSONObject output = new JSONObject(s);
-                    int harga = Integer.parseInt(output.getString("harga_produk"));
+                    harga = Integer.parseInt(output.getString("harga_produk"));
                     int total = 0;
                     for(int i = 0; i < pesanan.size() ; i++) {
                         total += Integer.parseInt(pesanan.get(i).get("total"));
@@ -112,4 +137,5 @@ public class orderList extends AppCompatActivity {
         checkToDB ae = new checkToDB(context);
         ae.execute();
     }
+
 }

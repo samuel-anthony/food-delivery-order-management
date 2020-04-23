@@ -95,6 +95,7 @@ public class orderEntry extends AppCompatActivity {
 
         newActivity = new Intent(this, orderList.class);
         newActivity.putExtra("order",(Serializable) pesanan);
+        newActivity.putExtra("user_data",bundle.getString("user_data"));
         startActivity(newActivity);
         finish();
     }
