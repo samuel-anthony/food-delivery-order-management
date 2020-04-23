@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,7 +26,6 @@ public class DatePickerFragment extends DialogFragment {
         this.isMaximumDate = isMaximumDate;
         this.tempDate = tempDate;
     }
-    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {

@@ -12,7 +12,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".cateringCreateNew"></activity>
+        <activity android:name=".CateringReOrder"></activity>
+        <activity android:name=".cateringOrderList" />
         <activity android:name=".orderPayment" />
         <activity android:name=".AdminEditHarga" />
         <activity android:name=".orderList" />

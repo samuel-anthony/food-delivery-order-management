@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".cateringEntry"
+        tools:context=".CateringReOrder"
         android:background="@drawable/main_background">
-
 
     <LinearLayout
             android:layout_width="match_parent" android:layout_height="match_parent"
@@ -28,33 +28,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
                 android:orientation="vertical">
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <View android:layout_width="fill_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1" />
-                        <TextView
-                                android:layout_marginLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/cateringNewOrderUnderLine"
-                                android:fontFamily="@font/pacifico"
-                                android:id="@+id/cateringFragmentEntry"
-                                android:textSize="15dp"
-                                android:textColor="@color/black"
-                                />
-                        <TextView
-                                android:layout_marginLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/cateringListOrder"                               android:fontFamily="@font/pacifico"
-                                android:id="@+id/cateringFragmentList"
-                                android:onClick="onchangeFragment"
-                                android:textSize="15dp"
-                                />
-                </LinearLayout>
-
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pacifico"
+                    android:textSize="10pt"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/ButtonOrderMore"/>
             <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -111,12 +93,12 @@
                     </LinearLayout>
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="5dp"
-                        android:fontFamily="@font/pacifico"
-                        android:text="@string/cateringDateFrom"
-                        android:textSize="15dp" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="5dp"
+                            android:fontFamily="@font/pacifico"
+                            android:text="@string/cateringDateFrom"
+                            android:textSize="15dp" />
 
                     <TextView
                             android:id="@+id/dateCateringFrom"
@@ -179,4 +161,4 @@
 
         </LinearLayout>
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>

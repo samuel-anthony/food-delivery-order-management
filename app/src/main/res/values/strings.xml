@@ -40,4 +40,12 @@
 
     <string name="ListOrder">List Order</string>
     <string name="Total">Total</string>
+
+    <string name="cateringNewOrder">Pesanan Baru</string>
+    <string name="cateringNewOrderUnderLine"><u>Pesanan Baru</u></string>
+    <string name="cateringListOrder">List Catering</string>
+    <string name="cateringListOrderUnderLine"><u>List Catering</u></string>
+    <string name="cateringDateFrom">Pesanan Mulai Tanggal :</string>
+    <string name="cateringDateTo">Pesanan Sampai Tanggal :</string>
+    <string name="cateringTime">Waktu untuk pengiriman :</string>
 </resources>

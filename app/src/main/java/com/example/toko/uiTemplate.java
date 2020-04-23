@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
-import android.support.v4.content.res.ResourcesCompat;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -16,12 +15,23 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.core.content.res.ResourcesCompat;
 
 
 public class uiTemplate {
     Context context;
     public uiTemplate (Context context){
         this.context = context;
+    }
+
+    public void createPopUpDialog(String title,String message){
+        new AlertDialog.Builder(context)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                }).show();
     }
 
     public LinearLayout createLinearLayout(int width, int height, float layoutWeight, float weightSum,boolean isVerticalLayout,boolean isRelativeCenter, int left, int top, int right, int bottom){
