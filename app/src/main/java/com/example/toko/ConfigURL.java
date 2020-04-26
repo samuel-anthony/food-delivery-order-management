@@ -19,6 +19,7 @@ public class ConfigURL {
     public final static String TakePriceBox = "http://" + staticIP + "/"+databaseName+"/takePriceBox.php/";
     public final static String SavePriceBox = "http://" + staticIP + "/"+databaseName+"/savePriceBox.php/";
     public final static String SaveNewOrder = "http://" + staticIP + "/"+databaseName+"/saveNewOrder.php/";
+    public final static String SaveNewOrderCatering = "http://" + staticIP + "/"+databaseName+"/saveNewOrderCatering.php/";
     public final static String ValidateBalance = "http://" + staticIP + "/"+databaseName+"/validateBalance.php/";
 
 }

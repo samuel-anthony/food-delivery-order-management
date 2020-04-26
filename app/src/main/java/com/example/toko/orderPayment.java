@@ -2,6 +2,7 @@ package com.example.toko;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,7 +23,7 @@ public class orderPayment extends AppCompatActivity {
     Bundle bundle;
     JSONObject data_user;
     boolean isVa = false;
-    int Total,userBalance = 0;
+    int Total,userBalance = 0,hargaperbox;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +34,27 @@ public class orderPayment extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Total = bundle.getInt("total");
+        Total = bundle.getInt("total",0);
+        hargaperbox = bundle.getInt("harga",0);
         takeData(this);
         setContentView(R.layout.activity_order_payment);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent newActivity = null;
+        if(pesanan.get(0).get("tanggal_mulai") == null) {
+            newActivity = new Intent(this, orderList.class);
+        }else{
+            newActivity = new Intent(this, cateringOrderList.class);
+        }
+        newActivity.putExtra("order",(Serializable) pesanan);
+        newActivity.putExtra("user_data",bundle.getString("user_data"));
+        startActivity(newActivity);
+        finish();
+    }
+
 
     public void onclickButton(View view){
         if(view == findViewById(R.id.buttonOrder)){
@@ -59,7 +78,12 @@ public class orderPayment extends AppCompatActivity {
     public String changeArrayListToString(){
         String returnValue = "";
         for(int i = 0; i < pesanan.size() ; i++) {
-            returnValue += pesanan.get(i).get("nama_produk")+","+pesanan.get(i).get("total") + (i == pesanan.size()-1 ? "":"|");
+            if(pesanan.get(0).get("tanggal_mulai")==null)
+                returnValue += pesanan.get(i).get("nama_produk")+","+pesanan.get(i).get("total") + (i == pesanan.size()-1 ? "":"|");
+            else{
+                int perPaket = Integer.valueOf(pesanan.get(i).get("beda_hari")) * Integer.valueOf(pesanan.get(i).get("beda_hari")) * hargaperbox;
+                returnValue += pesanan.get(i).get("nama_produk")+","+pesanan.get(i).get("total") + "," + perPaket + "," + pesanan.get(i).get("tanggal_mulai") + "," + pesanan.get(i).get("tanggal_akhir") + "," + pesanan.get(i).get("waktu") + (i == pesanan.size()-1 ? "":"|");
+            }
         }
         return returnValue;
     }
@@ -99,16 +123,24 @@ public class orderPayment extends AppCompatActivity {
             @Override
             protected String doInBackground(Void... v) {
                 HashMap<String,String> params = new HashMap<>();
+
                 try {
                     params.put("user_id",data_user.getString("user_id"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
                 params.put("total",String.valueOf(Total));
                 params.put("pesanan",changeArrayListToString());
                 params.put("isVA",isVa? "1":"0");
                 RequestHandler rh = new RequestHandler();
-                String res = rh.sendPostRequest(ConfigURL.SaveNewOrder, params);
+                String res = "";
+                if(pesanan.get(0).get("tanggal_mulai") != null){
+                    res = rh.sendPostRequest(ConfigURL.SaveNewOrderCatering, params);
+                }
+                else{
+                    rh.sendPostRequest(ConfigURL.SaveNewOrder, params);
+                }
                 return res;
             }
         }

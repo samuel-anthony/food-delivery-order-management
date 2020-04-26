@@ -1,13 +1,16 @@
 package com.example.toko;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -22,37 +25,70 @@ import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
-public class CateringReOrder extends AppCompatActivity {
+public class CateringReOrder extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
     uiTemplate uiTemplate;
     LinearLayout listMenu;
     ArrayList<HashMap<String,String>> pesanan = new ArrayList<HashMap<String,String>>();
     ArrayList<Integer> idMenuMaster= new ArrayList<>();
     Bundle bundle;
     SimpleDateFormat dateFormat;
+    View datePickerView;
+    View timePickeView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catering_re_order);
 
         uiTemplate = new uiTemplate(this);
-        listMenu = findViewById(R.id.listMenu);
+        listMenu = findViewById(R.id.listMenuFragment);
         bundle = getIntent().getExtras();
         pesanan = (ArrayList<HashMap<String,String>>) bundle.getSerializable("order");
         dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         checkMenu(this);
     }
 
-
     @Override
     public void onBackPressed() {
-        Intent newActivity = new Intent(this, cateringOrderList.class);
-        newActivity.putExtra("order",(Serializable) pesanan);
-        newActivity.putExtra("user_data",bundle.getString("user_data"));
-        startActivity(newActivity);
+        super.onBackPressed();
+        if(pesanan.size()>0){
+            Intent newActivity;
+            newActivity = new Intent(this, cateringOrderList.class);
+            newActivity.putExtra("order",(Serializable) pesanan);
+            newActivity.putExtra("user_data",bundle.getString("user_data"));
+            startActivity(newActivity);
+        }
         finish();
+    }
+
+    public void showDatePicker(View view){
+        String selectedDate = ((TextView)view).getText().toString();
+        DialogFragment datePicker = new DatePickerFragment(true,false,selectedDate);
+        datePicker.show(getSupportFragmentManager(), "Date Picker");
+        datePickerView = view;
+    }
+
+    public void showTimePicker(View view){
+        DialogFragment timePicker = new TimePickerFragment(view);
+        timePicker.show(getSupportFragmentManager(), "Date Picker");
+        timePickeView = view;
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+        String currentDateString = dateFormat.format(calendar.getTime());
+        TextView a = (TextView) datePickerView;
+        a.setText(currentDateString);
 
     }
     public void substractQuantity(View v){
@@ -108,11 +144,21 @@ public class CateringReOrder extends AppCompatActivity {
                 map.put("tanggal_mulai",dateFrom.getText().toString());
                 map.put("tanggal_akhir",dateTo.getText().toString());
                 map.put("waktu",timePicker.getText().toString());
+                Date firstDate = null,secondDate = null;
+                try {
+                    firstDate = dateFormat.parse(dateFrom.getText().toString());
+                    secondDate = dateFormat.parse(dateTo.getText().toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
+                long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS)+1;
+                map.put("beda_hari", String.valueOf(diff));
                 pesanan.add(map);
 
 
                 Intent newActivity;
-                newActivity = new Intent(this, orderList.class);
+                newActivity = new Intent(this, cateringOrderList.class);
                 newActivity.putExtra("order",(Serializable) pesanan);
                 newActivity.putExtra("user_data",bundle.getString("user_data"));
                 startActivity(newActivity);

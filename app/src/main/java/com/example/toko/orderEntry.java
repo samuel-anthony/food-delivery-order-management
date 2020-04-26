@@ -40,6 +40,20 @@ public class orderEntry extends AppCompatActivity {
         checkMenu(this);
     }
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(pesanan.size()>0){
+            Intent newActivity;
+            newActivity = new Intent(this, orderList.class);
+            newActivity.putExtra("order",(Serializable) pesanan);
+            newActivity.putExtra("user_data",bundle.getString("user_data"));
+            startActivity(newActivity);
+        }
+        finish();
+    }
+
     public void substractQuantity(View v){
         EditText editText = findViewById(R.id.quantityOrder);
         int value = Integer.parseInt(editText.getText().toString());
@@ -94,7 +108,7 @@ public class orderEntry extends AppCompatActivity {
         Intent newActivity;
 
 
-        newActivity = new Intent(this, cateringOrderList.class);
+        newActivity = new Intent(this, orderList.class);
         newActivity.putExtra("order",(Serializable) pesanan);
         newActivity.putExtra("user_data",bundle.getString("user_data"));
         startActivity(newActivity);

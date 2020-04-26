@@ -26,7 +26,7 @@ public class cateringOrderList extends AppCompatActivity {
     Bundle bundle;
     JSONObject data_user;
     LinearLayout listOrder;
-    int harga,barang;
+    int harga,barang,total;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +91,8 @@ public class cateringOrderList extends AppCompatActivity {
                 Intent newActivity;
                 newActivity = new Intent(this, orderPayment.class);
                 newActivity.putExtra("order",(Serializable) pesanan);
-                newActivity.putExtra("total",String.valueOf(harga*barang));
+                newActivity.putExtra("total",(harga*total));
+                newActivity.putExtra("harga",(harga));
                 newActivity.putExtra("user_data",bundle.getString("user_data"));
                 startActivity(newActivity);
                 finish();
@@ -122,9 +123,9 @@ public class cateringOrderList extends AppCompatActivity {
                 try {
                     JSONObject output = new JSONObject(s);
                     harga = Integer.parseInt(output.getString("harga_produk"));
-                    int total = 0;
+                    total = 0;
                     for(int i = 0; i < pesanan.size() ; i++) {
-                        total += Integer.parseInt(pesanan.get(i).get("total"));
+                        total += Integer.parseInt(pesanan.get(i).get("total"))*Integer.parseInt(pesanan.get(i).get("beda_hari"));
                     }
                     TextView textViewJumlahOrder = findViewById(R.id.jumlahOrder);
                     textViewJumlahOrder.setText("Rp " + String.valueOf(harga*total));

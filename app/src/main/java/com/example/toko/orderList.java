@@ -82,7 +82,8 @@ public class orderList extends AppCompatActivity {
                 Intent newActivity;
                 newActivity = new Intent(this, orderPayment.class);
                 newActivity.putExtra("order",(Serializable) pesanan);
-                newActivity.putExtra("total",String.valueOf(harga*barang));
+                newActivity.putExtra("total",(int)(harga*barang));
+                newActivity.putExtra("harga",(harga));
                 newActivity.putExtra("user_data",bundle.getString("user_data"));
                 startActivity(newActivity);
                 finish();
