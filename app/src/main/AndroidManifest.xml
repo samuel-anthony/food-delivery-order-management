@@ -12,7 +12,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".CateringReOrder"></activity>
+        <activity android:name=".orderEdit"></activity>
+        <activity android:name=".AdminAturPesananUpdateStatus" />
+        <activity android:name=".AdminAturPesanan" />
+        <activity android:name=".AdminEditHour" />
+        <activity android:name=".CateringReOrder" />
         <activity android:name=".cateringOrderList" />
         <activity android:name=".orderPayment" />
         <activity android:name=".AdminEditHarga" />

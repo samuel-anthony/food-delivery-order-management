@@ -24,5 +24,13 @@ public class adminMainActivity extends AppCompatActivity {
             mainActivity = new Intent(this, AdminEditHarga.class);
             startActivity(mainActivity);
         }
+        else if(view == findViewById(R.id.buttonChangeHour)) {
+            mainActivity = new Intent(this, AdminEditHour.class);
+            startActivity(mainActivity);
+        }
+        else if(view == findViewById(R.id.buttonListOrder)) {
+            mainActivity = new Intent(this, AdminAturPesanan.class);
+            startActivity(mainActivity);
+        }
     }
 }

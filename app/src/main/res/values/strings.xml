@@ -12,7 +12,9 @@
     <string name="ButtonOrder">Order Sekarang</string>
     <string name="ButtonOrderMore">Tambah Order</string>
     <string name="ButtonConfirm">Konfirmasi</string>
+    <string name="ButtonReject">Tolak Pembayaran</string>
     <string name="ButtonSave">Simpan</string>
+    <string name="ButtonUpdateStatus">Ubah Status</string>
     <string name="balance">Saldo</string>
     <string name="IDRCurrency">Rp</string>
     <string name="TopUpBalance">Top Up</string>
@@ -37,9 +39,19 @@
     <string name="AdminCustomMenuNameListCombo">List Produk Yang Akan Disimpan</string>
     <string name="AdminCustomSetHarga">Atur Harga Per Box</string>
     <string name="AdminSetHarga">Harga Per Box</string>
+    <string name="AdminCustomSetJam">Atur Jam Pengiriman Default</string>
+    <string name="AdminCustomSetJamPagi">Jam Pagi</string>
+    <string name="AdminCustomSetJamSiang">Jam Siang</string>
+    <string name="AdminCustomSetJamMalam">Jam Malam</string>
+
+    <string name="AdminMaintainOrderMenu">Atur Pesanan</string>
 
     <string name="ListOrder">List Order</string>
     <string name="Total">Total</string>
+
+    <string name="aturPesananFieldName">Name</string>
+    <string name="aturPesananFieldAddress">Address</string>
+    <string name="aturPesananFieldStatus">Status</string>
 
     <string name="cateringNewOrder">Pesanan Baru</string>
     <string name="cateringNewOrderUnderLine"><u>Pesanan Baru</u></string>

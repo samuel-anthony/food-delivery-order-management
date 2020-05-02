@@ -139,7 +139,7 @@ public class orderPayment extends AppCompatActivity {
                     res = rh.sendPostRequest(ConfigURL.SaveNewOrderCatering, params);
                 }
                 else{
-                    rh.sendPostRequest(ConfigURL.SaveNewOrder, params);
+                    res = rh.sendPostRequest(ConfigURL.SaveNewOrder, params);
                 }
                 return res;
             }
