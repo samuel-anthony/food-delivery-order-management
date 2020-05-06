@@ -60,4 +60,8 @@
     <string name="cateringDateFrom">Pesanan Mulai Tanggal :</string>
     <string name="cateringDateTo">Pesanan Sampai Tanggal :</string>
     <string name="cateringTime">Waktu untuk pengiriman :</string>
+
+    <string name="NominalTopUp">Nominal Top Up</string>
+    <string name="BCABankAccount">BCA : 123456789098</string>
+    <string name="MandiriBankAccount">Mandiri :123456789098</string>
 </resources>

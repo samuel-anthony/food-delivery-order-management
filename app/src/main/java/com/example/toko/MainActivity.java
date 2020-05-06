@@ -76,6 +76,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             newActivity.putExtra("user_data",bundle.getString("user_data"));
             startActivity(newActivity);
         }
+        else if (v==findViewById(R.id.logoTopUp)){
+            newActivity = new Intent(this, topUpEntry.class);
+            ArrayList<HashMap<String,String>> pesanan = new ArrayList<HashMap<String,String>>();
+            newActivity.putExtra("order",(Serializable) pesanan);
+            newActivity.putExtra("user_data",bundle.getString("user_data"));
+            startActivity(newActivity);
+        }
     }
     public void onchangeFragment(View v) throws JSONException {
         if(v == findViewById(R.id.homeMenu)) {

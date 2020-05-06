@@ -77,7 +77,9 @@
                     <ImageView
                             android:layout_width="30pt"
                             android:layout_height="30pt"
-                            android:src="@drawable/ic_account_balance_wallet_black_24dp"/>
+                            android:src="@drawable/ic_account_balance_wallet_black_24dp"
+                            android:id="@+id/logoTopUp"
+                            android:onClick="onchangeMenu"/>
                 </LinearLayout>
                 <View android:layout_width="0dp"
                         android:layout_height="fill_parent"
