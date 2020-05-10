@@ -32,5 +32,9 @@ public class adminMainActivity extends AppCompatActivity {
             mainActivity = new Intent(this, AdminAturPesanan.class);
             startActivity(mainActivity);
         }
+        else if(view == findViewById(R.id.buttonListTopUp)) {
+            mainActivity = new Intent(this, AdminTopUpHistoryList.class);
+            startActivity(mainActivity);
+        }
     }
 }

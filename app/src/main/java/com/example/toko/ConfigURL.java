@@ -3,7 +3,8 @@ package com.example.toko;
 public class ConfigURL {
     //ini buat constant yang di pake di db nantinya
     //ip wifi arenda =  192.168.0.108
-    private final static String staticIP = "192.168.0.110";
+    //laptopPindy = 192.168.100.203
+    private final static String staticIP = "192.168.100.158";
     private final static String databaseName = "toko";
     public final static String Login = "http://" + staticIP + "/"+databaseName+"/login.php/";
     public final static String Register = "http://" + staticIP + "/"+databaseName+"/register.php/";
@@ -29,5 +30,9 @@ public class ConfigURL {
     public final static String UpdateStatusPesanan = "http://" + staticIP + "/"+databaseName+"/updateStatusPesanan.php/";
     public final static String UpdateStatusPembayaranPesanan = "http://" + staticIP + "/"+databaseName+"/updateStatusPembayaranPesanan.php/";
 
+    public final static String SaveNewTopUp = "http://" + staticIP + "/"+databaseName+"/saveNewTopUp.php/";
+    public final static String TakeTopUpHistoryList = "http://" + staticIP + "/"+databaseName+"/takeTopUpHistoryList.php/";
+    public final static String TakeTopUpHistoryById = "http://" + staticIP + "/"+databaseName+"/takeTopUpHistoryById.php/";
+    public final static String UpdateStatusTopUpHistory = "http://" + staticIP + "/"+databaseName+"/updateStatusTopUpHistory.php/";
 
 }

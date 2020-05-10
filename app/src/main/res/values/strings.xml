@@ -33,6 +33,7 @@
     <string name="AdminCustomMenuNameListProductDetail">List Produk</string>
     <string name="AdminCustomMenuNameListProductDetailName">Nama Produk</string>
     <string name="AdminCustomMenuNameListProductDetailPrice">Harga Produk</string>
+    <string name="AdminTopUpMenu">Konirmasi Top Up</string>
 
     <string name="AdminCustomMenuAddCombo">Tambah Kombinasi Menu Baru</string>
     <string name="AdminCustomMenuAddComboMaster">Nama Combo/Paket</string>

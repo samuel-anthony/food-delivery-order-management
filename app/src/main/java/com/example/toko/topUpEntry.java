@@ -50,7 +50,9 @@ public class topUpEntry extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.fragmentImage, fragment);
-        ft.commit(); try {
+        ft.commit();
+        bundle = getIntent().getExtras();
+        try {
             data_user = new JSONObject(bundle.getString("user_data"));
             ((TextView)findViewById(R.id.userBalance)).setText(data_user.getString("balance"));
         } catch (JSONException e) {
@@ -98,6 +100,16 @@ public class topUpEntry extends AppCompatActivity {
         fragmentPicture.setVisibility(View.INVISIBLE);
     }
 
+    public void confirmTopUp(View view){
+        EditText editText = findViewById(R.id.nominalTopUp);
+        if(!editText.getText().toString().isEmpty() && Integer.valueOf(editText.getText().toString()) > 0 && !imageString.isEmpty()){
+            saveContent(this);
+        }
+        else{
+            Toast.makeText(this,"mohon isi nominal dengan benar dan upload gambar sebagai bukti",Toast.LENGTH_LONG).show();
+        }
+    }
+
     public void saveContent(Context context){
         class checkToDB extends AsyncTask<Void,Void,String> {
 
@@ -142,7 +154,7 @@ public class topUpEntry extends AppCompatActivity {
                 params.put("nominal",nominalTopUp);
                 params.put("imageString",imageString);
                 RequestHandler rh = new RequestHandler();
-                String res = rh.sendPostRequest(ConfigURL.SaveNewProduct, params);
+                String res = rh.sendPostRequest(ConfigURL.SaveNewTopUp, params);
                 return res;
             }
         }
