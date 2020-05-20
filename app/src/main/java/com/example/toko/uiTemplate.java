@@ -17,6 +17,10 @@ import android.widget.TextView;
 
 import androidx.core.content.res.ResourcesCompat;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.Handler;
+
 
 public class uiTemplate {
     Context context;
@@ -158,5 +162,10 @@ public class uiTemplate {
         radioButton.setId(id);
         radioButton.setText(content);
         return radioButton;
+    }
+
+    public void timer(){
+
+
     }
 }

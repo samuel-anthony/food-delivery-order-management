@@ -3,8 +3,10 @@ package com.example.toko;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -21,20 +23,36 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 public class LoginRegister extends AppCompatActivity {
+    private android.content.SharedPreferences mPreferences;
+    private SharedPreferences.Editor mEditor;
+    public String current_login_id;
+    public static final String login_id = "login_id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Fragment fragment = new login();
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.fragmentloginRegister, fragment);
-        ft.commit();
-
         setContentView(R.layout.activity_login_register);
+
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        mEditor = mPreferences.edit();
+        loadData();
+        if (!current_login_id.equalsIgnoreCase("")) {
+            takeUser(this);
+        }
+        else{
+            Fragment fragment = new login();
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.fragmentloginRegister, fragment);
+            ft.commit();
+
+        }
     }
 
+    public void loadData(){
+        current_login_id = mPreferences.getString(login_id,"");
+    }
 
     public void changeFragment(View view){
         if(view == findViewById(R.id.fragmentLoginToRegister)) {
@@ -98,6 +116,8 @@ public class LoginRegister extends AppCompatActivity {
                         if(output.getString("is_user").equalsIgnoreCase("1")){
                             mainActivity = new Intent(context, MainActivity.class);
                             mainActivity.putExtra("user_data",s);
+                            mEditor.putString(login_id,((EditText)findViewById(R.id.usernameLogin)).getText().toString());
+                            mEditor.commit();
                         }
                         else{
                             mainActivity = new Intent(context,adminMainActivity.class);
@@ -178,6 +198,63 @@ public class LoginRegister extends AppCompatActivity {
 
                 RequestHandler rh = new RequestHandler();
                 String res = rh.sendPostRequest(ConfigURL.Register, params);
+                return res;
+            }
+        }
+
+        checkLoginToDB ae = new checkLoginToDB(context);
+        ae.execute();
+    }
+
+
+    public void takeUser(Context context){
+        class checkLoginToDB extends AsyncTask<Void,Void,String> {
+
+            ProgressDialog loading;
+            Context context;
+
+            public checkLoginToDB(Context context){
+                this.context = context;
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(context,"Mencoba Login...","Please wait...",false,false);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                try {
+                    JSONObject output = new JSONObject(s);
+                    if(output.getString("value").equalsIgnoreCase("1")){
+                        Intent mainActivity = null;
+                        if(output.getString("is_user").equalsIgnoreCase("1")){
+                            mainActivity = new Intent(context, MainActivity.class);
+                            mainActivity.putExtra("user_data",s);
+                        }
+                        else{
+                            mainActivity = new Intent(context,adminMainActivity.class);
+                        }
+                        startActivity(mainActivity);
+                        finish();
+                    }
+                    Toast.makeText(context,output.getString("message"),Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            protected String doInBackground(Void... v) {
+                HashMap<String,String> params = new HashMap<>();
+
+                params.put("username",current_login_id);
+
+                RequestHandler rh = new RequestHandler();
+                String res = rh.sendPostRequest(ConfigURL.LoginByPreference, params);
                 return res;
             }
         }

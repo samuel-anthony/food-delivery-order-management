@@ -64,5 +64,13 @@
                         android:text="@string/ButtonSave"
                         android:layout_marginTop="30dp"
                         android:background="@drawable/round_edit_text_black"/>
+                <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ButtonLogOut"
+                        android:layout_marginTop="30dp"
+                        android:id="@+id/buttonLogOut"
+                        android:onClick="onchangeMenu"
+                        android:background="@drawable/round_edit_text_black"/>
         </LinearLayout>
 </FrameLayout>

@@ -12,7 +12,9 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".AdminTopUpHistoryList"></activity>
+        <activity android:name=".reorderList"></activity>
+        <activity android:name=".reorderDetail" />
+        <activity android:name=".AdminTopUpHistoryList" />
         <activity android:name=".AdminTopUpHistory" />
         <activity android:name=".AdminAturPesananUpdateStatus" />
         <activity android:name=".AdminAturPesanan" />

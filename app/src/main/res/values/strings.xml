@@ -10,17 +10,20 @@
     <string name="ButtonRegister">Register Sekarang</string>
     <string name="ButtonLogin">Login Sekarang</string>
     <string name="ButtonOrder">Order Sekarang</string>
+    <string name="ButtonReOrder">Order Ulang</string>
     <string name="ButtonOrderMore">Tambah Order</string>
     <string name="ButtonConfirm">Konfirmasi</string>
     <string name="ButtonReject">Tolak Pembayaran</string>
     <string name="ButtonSave">Simpan</string>
     <string name="ButtonUpdateStatus">Ubah Status</string>
+    <string name="ButtonLogOut">Log Out</string>
     <string name="balance">Saldo</string>
     <string name="IDRCurrency">Rp</string>
     <string name="TopUpBalance">Top Up</string>
     <string name="History">Aktivitas</string>
     <string name="Rewards">Promo</string>
     <string name="profileMenu">Profile</string>
+    <string name="primeMenu">Prime</string>
     <string name="cateringMenu">Catering</string>
     <string name="phoneNumber">Nomor Telepon</string>
     <string name="FavouriteMenu">Menu Paling Laris Minggu Ini</string>
@@ -65,4 +68,8 @@
     <string name="NominalTopUp">Nominal Top Up</string>
     <string name="BCABankAccount">BCA : 123456789098</string>
     <string name="MandiriBankAccount">Mandiri :123456789098</string>
+
+    <string name="OrderPrime">Order From Prime</string>
+    <string name="PrimeMsg">Here are the most picked menu this week</string>
+
 </resources>

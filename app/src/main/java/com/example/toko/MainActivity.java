@@ -1,9 +1,11 @@
 package com.example.toko;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 
 import androidx.fragment.app.DialogFragment;
@@ -11,9 +13,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -21,6 +26,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,23 +37,31 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
     View datePickerView;
     View timePickeView;
     SimpleDateFormat dateFormat;
-    LinearLayout listMenu;
+    LinearLayout listMenu,listOrder;
     Bundle bundle;
     JSONObject data_user;
     ArrayList<HashMap<String,String>> pesanan = new ArrayList<HashMap<String,String>>();
     ArrayList<Integer> idMenuMaster= new ArrayList<>();
     uiTemplate uiTemplate;
+    String menu ="";
+    ArrayList<HashMap<String,String>> pesananList = new ArrayList<HashMap<String,String>>();
+    private android.content.SharedPreferences mPreferences;
+    private SharedPreferences.Editor mEditor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +78,25 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         }
         uiTemplate = new uiTemplate(this);
         dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        mEditor = mPreferences.edit();
         setContentView(R.layout.activity_main);
-    }
+
+        final android.os.Handler handler = new android.os.Handler();
+        final int delay = 60000; //milliseconds
+
+        handler.postDelayed(new Runnable(){
+            public void run(){
+                //do something
+                try {
+                    takeUpdateStatus(MainActivity.this,data_user.getString("user_id"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                handler.postDelayed(this, delay);
+            }
+        }, delay);
+}
 
     public void onchangeMenu(View v){
         Intent newActivity;
@@ -83,7 +114,25 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             newActivity.putExtra("user_data",bundle.getString("user_data"));
             startActivity(newActivity);
         }
+        else if(v == findViewById(R.id.buttonLogOut)){
+            mEditor.putString("login_id","");
+            mEditor.commit();
+            newActivity = new Intent(this, LoginRegister.class);
+            startActivity(newActivity);
+            finish();
+        }
+        else if(v == findViewById(R.id.buttonOrderPrime)){
+            newActivity = new Intent(this, reorderList.class);
+            HashMap<String,String> map = new HashMap<>();
+            map.put("nama_produk",menu);
+            map.put("total",((EditText)findViewById(R.id.quantityOrder)).getText().toString());
+            pesananList.add(map);
+            newActivity.putExtra("order",(Serializable)pesananList);
+            newActivity.putExtra("user_data",bundle.getString("user_data"));
+            startActivity(newActivity);
+        }
     }
+
     public void onchangeFragment(View v) throws JSONException {
         if(v == findViewById(R.id.homeMenu)) {
             Fragment fragment = new HalamanUtama();
@@ -115,6 +164,18 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         }
         else if(v == findViewById(R.id.cateringFragmentList)) {
             Fragment fragment = new cateringList();
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.fragmentMainActivity, fragment);
+            ft.commit();
+        } else if(v == findViewById(R.id.activityMenu)) {
+            Fragment fragment = new recentOrder();
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.fragmentMainActivity, fragment);
+            ft.commit();
+        } else if(v == findViewById(R.id.primeMenu)) {
+            Fragment fragment = new primeEntry();
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
             ft.replace(R.id.fragmentMainActivity, fragment);
@@ -155,6 +216,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     public void setListMenu(LinearLayout view){
         listMenu = view;
+    }
+
+
+    public void setListOrder(LinearLayout view){
+        listOrder = view;
     }
 
     public void substractQuantity(View v){
@@ -318,5 +384,210 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         checkToDB ae = new checkToDB(context);
         ae.execute();
+    }
+
+
+
+    public void takeRecentOrder(Context context,String user_id){
+        class checkToDB extends AsyncTask<Void,Void,String> {
+
+            ProgressDialog loading;
+            Context context;
+            String user_id;
+            public checkToDB(Context context,String user_id){
+                this.context = context;
+                this.user_id = user_id;
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(context,"menyimpan data...","Please wait...",false,false);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                try {
+                    JSONObject output = new JSONObject(s);
+                    JSONArray product = output.getJSONArray("products");
+                    for(int i = 0; i<product.length() ; i++){
+                        JSONArray category = product.getJSONArray(i);
+                        LinearLayout linearLayout = uiTemplate.createLinearLayout(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT,10f,10f,true,false,5,5,5,5);
+                        TextView judul = uiTemplate.createTextView(category.getJSONObject(0).getString("status"),R.font.pacifico);
+                        judul.setTextSize(20f);
+                        linearLayout.addView(judul);
+                        for(int j = 0; j<category.length() ; j++){
+                            final JSONObject detail = category.getJSONObject(j);
+                            LinearLayout bigContainer =uiTemplate.createLinearLayout(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT,10f,10f,true,false,5,10,5,10);
+                            TextView detailPesanan = uiTemplate.createTextView(detail.getString("detail_pesanan"),R.font.pacifico);
+                            TextView tanggalPemesan = uiTemplate.createTextView(detail.getString("tanggal_order"),R.font.pacifico);
+                            TextView namaPemesan = uiTemplate.createTextView(detail.getString("nama_pemesan"),R.font.pacifico);
+                            TextView alamat = uiTemplate.createTextView(detail.getString("alamat"),R.font.pacifico);
+                            bigContainer.addView(detailPesanan);
+                            bigContainer.addView(tanggalPemesan);
+                            bigContainer.addView(namaPemesan);
+                            bigContainer.addView(alamat);
+                            bigContainer.setBackgroundResource(R.drawable.round_edit_text_black);
+                            linearLayout.addView(bigContainer);
+                            bigContainer.setOnClickListener(new View.OnClickListener()
+                            {
+                                @Override
+                                public void onClick(View v)
+                                {
+                                    Intent newActivity;
+                                    newActivity = new Intent(context, reorderDetail.class);
+                                    newActivity.putExtra("order", (Serializable)changeJSONOBjectToMap(detail));
+                                    newActivity.putExtra("user_data",bundle.getString("user_data"));
+                                    startActivity(newActivity);
+                                }
+                            });
+                        }
+                        listOrder.addView(linearLayout);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            protected String doInBackground(Void... v) {
+                HashMap<String,String> params = new HashMap<>();
+                params.put("user_id",user_id);
+                RequestHandler rh = new RequestHandler();
+
+                String res = null;
+                res = rh.sendPostRequest(ConfigURL.TakePesananByIdList, params);
+                return res;
+            }
+        }
+
+        checkToDB ae = new checkToDB(context,user_id);
+        ae.execute();
+    }
+
+
+    public void takeUpdateStatus(Context context,String user_id){
+        class checkToDB extends AsyncTask<Void,Void,String> {
+
+            ProgressDialog loading;
+            Context context;
+            String user_id;
+            public checkToDB(Context context,String user_id){
+                this.context = context;
+                this.user_id = user_id;
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(context,"menyimpan data...","Please wait...",false,false);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                try {
+                    JSONObject output = new JSONObject(s);
+                    if(output.getString("value").equalsIgnoreCase("1")){
+                        new AlertDialog.Builder(context)
+                                .setTitle("Reminder")
+                                .setMessage("Your order : "+ output.getString("") + " will delivered on " + output.getString(""))
+                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                    }
+                                }).show();
+                    }
+                    Toast.makeText(context,output.getString("message"),Toast.LENGTH_LONG).show();
+                }catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            protected String doInBackground(Void... v) {
+                HashMap<String,String> params = new HashMap<>();
+                params.put("user_id",user_id);
+                RequestHandler rh = new RequestHandler();
+
+                String res = null;
+                res = rh.sendPostRequest(ConfigURL.TakePesananByIdForCatering, params);
+                return res;
+            }
+        }
+
+        checkToDB ae = new checkToDB(context,user_id);
+        ae.execute();
+    }
+
+
+
+    public void takePrimeOrder(Context context){
+        class checkToDB extends AsyncTask<Void,Void,String> {
+
+            ProgressDialog loading;
+            Context context;
+            public checkToDB(Context context){
+                this.context = context;
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(context,"menyimpan data...","Please wait...",false,false);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                try {
+                    JSONObject output = new JSONObject(s);
+                    JSONArray product = output.getJSONArray("products");
+                    for(int i = 0; i<product.length() ; i++){
+                        JSONObject detil = product.getJSONObject(i);
+                        LinearLayout linearLayout = uiTemplate.createLinearLayout(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT,10f,10f,true,false,5,5,5,5);
+                        TextView judul = uiTemplate.createTextView(detil.getString("nama_produk"),R.font.pacifico);
+                        judul.setTextSize(15f);
+                        linearLayout.addView(judul);
+                        listOrder.addView(linearLayout);
+                        menu += detil.getString("nama_produk") + (i==product.length()-1 ? "":"+");
+                    }
+                }catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            protected String doInBackground(Void... v) {
+                HashMap<String,String> params = new HashMap<>();
+                RequestHandler rh = new RequestHandler();
+
+                String res = null;
+                res = rh.sendPostRequest(ConfigURL.TakePesananForPrime, params);
+                return res;
+            }
+        }
+
+        checkToDB ae = new checkToDB(context );
+        ae.execute();
+    }
+
+    public HashMap<String,String> changeJSONOBjectToMap(JSONObject jsonObject) {
+        HashMap<String,String> hashMap = new HashMap<>();
+        Iterator<String> keysItr = jsonObject.keys();
+        while (keysItr.hasNext()) {
+            String key = keysItr.next();
+            String value = null;
+            try {
+                value = jsonObject.getString(key);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            hashMap.put(key,value);
+        }
+        return hashMap;
     }
 }

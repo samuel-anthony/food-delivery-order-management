@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".reorderList"
+        android:background="@drawable/main_background">
+    <LinearLayout
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:layout_marginTop="20pt"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="vertical">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pacifico"
+                android:textSize="15pt"
+                android:layout_gravity="center"
+                android:layout_marginVertical="10dp"
+                android:textColor="@color/white"
+                android:shadowColor="@color/black"
+                android:text="@string/ListOrder"/>
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        android:background="@drawable/round_edit_text_black"
+                        android:layout_marginTop="20dp">
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/listOrder"
+                            android:orientation="vertical"
+                            android:layout_marginHorizontal="10dp">
+
+                    </LinearLayout>
+                </ScrollView>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="10dp">
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Total"
+                            android:fontFamily="@font/pacifico"
+                            android:textSize="20dp"/>
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/jumlahOrder"
+                            android:fontFamily="@font/pacifico"
+                            android:textSize="20dp"/>
+                </LinearLayout>
+                <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ButtonOrder"
+                        android:id="@+id/buttonOrder"
+                        android:background="@drawable/round_edit_text_black"
+                        android:layout_marginBottom="20dp"
+                        android:onClick="changeMenu"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>

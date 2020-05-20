@@ -45,10 +45,12 @@
                         android:orientation="vertical"
                         android:id="@+id/activityMenu"
                         android:onClick="onchangeFragment">
+
                     <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
-                            android:src="@drawable/ic_format_list_bulleted_black_24dp"/>
+                            android:src="@drawable/ic_format_list_bulleted_black_24dp" />
+
                     <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -82,15 +84,17 @@
                     android:orientation="vertical"
                     android:id="@+id/primeMenu"
                     android:onClick="onchangeFragment">
+
                 <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:src="@drawable/ic_stars_black_24dp"/>
+                        android:src="@drawable/ic_stars_black_24dp" />
+
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Prime"
+                        android:text="@string/primeMenu"
                         android:fontFamily="@font/pacifico"/>
             </LinearLayout>
 
