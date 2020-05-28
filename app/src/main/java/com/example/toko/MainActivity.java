@@ -19,11 +19,14 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -61,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     ArrayList<HashMap<String,String>> pesananList = new ArrayList<HashMap<String,String>>();
     private android.content.SharedPreferences mPreferences;
     private SharedPreferences.Editor mEditor;
-
+    boolean isDefaultTimeCustom = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -202,9 +205,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void showTimePicker(View view){
-        DialogFragment timePicker = new TimePickerFragment(view);
-        timePicker.show(getSupportFragmentManager(), "Date Picker");
-        timePickeView = view;
+        if(isDefaultTimeCustom){
+            DialogFragment timePicker = new TimePickerFragment(view);
+            timePicker.show(getSupportFragmentManager(), "Date Picker");
+            timePickeView = view;
+        }
     }
 
     @Override
@@ -377,6 +382,33 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                         listMenu.addView(linearLayout);
                         idMenuMaster.add(i);
                     }
+                    isDefaultTimeCustom = false;
+                    JSONObject timeDefault = output.getJSONObject("response");
+                    final ArrayList<String> arrayListProject = new ArrayList<String>();
+                    arrayListProject.add("morning");
+                    arrayListProject.add("afternoon");
+                    arrayListProject.add("evening");
+                    arrayListProject.add("custom");
+                    final ArrayList<String> arrayListTime = new ArrayList<String>();
+                    arrayListTime.add(timeDefault.getString("morning"));
+                    arrayListTime.add(timeDefault.getString("afternoon"));
+                    arrayListTime.add(timeDefault.getString("evening"));
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(context,android.R.layout.simple_selectable_list_item, arrayListProject);
+                    arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    Spinner spinnerProject = findViewById(R.id.defaultTime);
+                    spinnerProject.setAdapter(arrayAdapter);
+                    spinnerProject.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            isDefaultTimeCustom = position < 3 ? false : true;
+                            if(!isDefaultTimeCustom)
+                                ((TextView)findViewById(R.id.timeCatering)).setText(arrayListTime.get(position));
+                        }
+                        @Override
+                        public void onNothingSelected(AdapterView <?> parent) {
+                            Toast.makeText(parent.getContext(), "Nothing Selected: ",    Toast.LENGTH_LONG).show();
+                        }
+                    });
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

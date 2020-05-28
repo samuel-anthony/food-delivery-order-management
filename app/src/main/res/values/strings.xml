@@ -65,12 +65,10 @@ Dont Have an Account? Create Your Account Now</string>
     <string name="cateringNewOrderUnderLine"><u>New Order</u></string>
     <string name="cateringListOrder">List Catering</string>
     <string name="cateringListOrderUnderLine"><u>List Catering</u></string>
-    <string name="cateringDateFrom">Order Starting Date
- :</string>
-    <string name="cateringDateTo">Orders Until Date
- :</string>
-    <string name="cateringTime">Time For Shipping
- :</string>
+    <string name="cateringDateFrom">Order Starting Date:</string>
+    <string name="cateringDateTo">Orders Until Date:</string>
+    <string name="cateringWorkingHour">Working Hour</string>
+    <string name="cateringTime">Time For Shipping:</string>
 
     <string name="NominalTopUp">Nominal Top Up
  </string>
