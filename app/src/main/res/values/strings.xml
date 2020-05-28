@@ -5,50 +5,54 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Register">Register</string>
     <string name="Login">Login</string>
-    <string name="RegisterToLogin">Sudah Punya Akun? Login Sekarang</string>
-    <string name="LoginToRegister">Belum Memliki Akun? Buat Yang Akunmu Sekarang</string>
-    <string name="ButtonRegister">Register Sekarang</string>
-    <string name="ButtonLogin">Login Sekarang</string>
-    <string name="ButtonOrder">Order Sekarang</string>
-    <string name="ButtonReOrder">Order Ulang</string>
-    <string name="ButtonOrderMore">Tambah Order</string>
-    <string name="ButtonConfirm">Konfirmasi</string>
-    <string name="ButtonReject">Tolak Pembayaran</string>
-    <string name="ButtonSave">Simpan</string>
-    <string name="ButtonUpdateStatus">Ubah Status</string>
+    <string name="RegisterToLogin">Already Have an Account? Login Now
+</string>
+    <string name="LoginToRegister">
+Dont Have an Account? Create Your Account Now</string>
+    <string name="ButtonRegister">Register Now</string>
+    <string name="ButtonLogin">Login Now</string>
+    <string name="ButtonOrder">Order Now</string>
+    <string name="ButtonReOrder">Reorder</string>
+    <string name="ButtonOrderMore">Add Order</string>
+    <string name="ButtonConfirm">Confirm</string>
+    <string name="ButtonReject">Reject Order</string>
+    <string name="ButtonSave">Save</string>
+    <string name="ButtonUpdateStatus">Change Status</string>
     <string name="ButtonLogOut">Log Out</string>
-    <string name="balance">Saldo</string>
+    <string name="balance">Balance</string>
     <string name="IDRCurrency">Rp</string>
     <string name="TopUpBalance">Top Up</string>
-    <string name="History">Aktivitas</string>
+    <string name="History">Activity</string>
     <string name="Rewards">Promo</string>
     <string name="profileMenu">Profile</string>
     <string name="primeMenu">Prime</string>
     <string name="cateringMenu">Catering</string>
     <string name="phoneNumber">Phone Number</string>
-    <string name="FavouriteMenu">Menu Paling Laris Minggu Ini</string>
-    <string name="AdminPage">Halaman Admin</string>
-    <string name="AdminCustomMenu">Atur Menu</string>
-    <string name="AdminCustomCombo">Atur Combo</string>
-    <string name="AdminCustomMenuAddMaster">Tambah Menu Baru</string>
-    <string name="AdminCustomMenuEditMaster">Ubah Menu</string>
-    <string name="AdminCustomMenuNameProductMaster">Nama Kategori</string>
-    <string name="AdminCustomMenuNameListProductDetail">List Produk</string>
-    <string name="AdminCustomMenuNameListProductDetailName">Nama Produk</string>
-    <string name="AdminCustomMenuNameListProductDetailPrice">Harga Produk</string>
-    <string name="AdminTopUpMenu">Konirmasi Top Up</string>
+    <string name="FavouriteMenu">This Weeks Best-Selling Menu</string>
+    <string name="AdminPage">Admin Page</string>
+    <string name="AdminCustomMenu">Set Menu</string>
+    <string name="AdminCustomCombo">Set COmbo</string>
+    <string name="AdminCustomMenuAddMaster">Add New Menu</string>
+    <string name="AdminCustomMenuEditMaster">Change Menu</string>
+    <string name="AdminCustomMenuNameProductMaster">Category Name</string>
+    <string name="AdminCustomMenuNameListProductDetail">Product list</string>
+    <string name="AdminCustomMenuNameListProductDetailName">Product Namek</string>
+    <string name="AdminCustomMenuNameListProductDetailPrice">Product Price </string>
+    <string name="AdminTopUpMenu">Top Up Confirmation </string>
 
-    <string name="AdminCustomMenuAddCombo">Tambah Kombinasi Menu Baru</string>
-    <string name="AdminCustomMenuAddComboMaster">Nama Combo/Paket</string>
-    <string name="AdminCustomMenuNameListCombo">List Produk Yang Akan Disimpan</string>
-    <string name="AdminCustomSetHarga">Atur Harga Per Box</string>
-    <string name="AdminSetHarga">Harga Per Box</string>
-    <string name="AdminCustomSetJam">Atur Jam Pengiriman Default</string>
-    <string name="AdminCustomSetJamPagi">Jam Pagi</string>
-    <string name="AdminCustomSetJamSiang">Jam Siang</string>
-    <string name="AdminCustomSetJamMalam">Jam Malam</string>
+    <string name="AdminCustomMenuAddCombo">Add New Combination</string>
+    <string name="AdminCustomMenuAddComboMaster">Package / Combo Name </string>
+    <string name="AdminCustomMenuNameListCombo">List of Products to Be Saved
+</string>
+    <string name="AdminCustomSetHarga">Set Price Per Box</string>
+    <string name="AdminSetHarga">Price Per Box</string>
+    <string name="AdminCustomSetJam">Set Default Delivery Hours
+</string>
+    <string name="AdminCustomSetJamPagi">Breakfast Batch</string>
+    <string name="AdminCustomSetJamSiang">Lunch Batch</string>
+    <string name="AdminCustomSetJamMalam">Dinner Batch</string>
 
-    <string name="AdminMaintainOrderMenu">Atur Pesanan</string>
+    <string name="AdminMaintainOrderMenu">Set Order</string>
 
     <string name="ListOrder">List Order</string>
     <string name="Total">Total</string>
@@ -57,15 +61,19 @@
     <string name="aturPesananFieldAddress">Address</string>
     <string name="aturPesananFieldStatus">Status</string>
 
-    <string name="cateringNewOrder">Pesanan Baru</string>
-    <string name="cateringNewOrderUnderLine"><u>Pesanan Baru</u></string>
+    <string name="cateringNewOrder">New Order</string>
+    <string name="cateringNewOrderUnderLine"><u>New Order</u></string>
     <string name="cateringListOrder">List Catering</string>
     <string name="cateringListOrderUnderLine"><u>List Catering</u></string>
-    <string name="cateringDateFrom">Pesanan Mulai Tanggal :</string>
-    <string name="cateringDateTo">Pesanan Sampai Tanggal :</string>
-    <string name="cateringTime">Waktu untuk pengiriman :</string>
+    <string name="cateringDateFrom">Order Starting Date
+ :</string>
+    <string name="cateringDateTo">Orders Until Date
+ :</string>
+    <string name="cateringTime">Time For Shipping
+ :</string>
 
-    <string name="NominalTopUp">Nominal Top Up</string>
+    <string name="NominalTopUp">Nominal Top Up
+ </string>
     <string name="BCABankAccount">BCA : 123456789098</string>
     <string name="MandiriBankAccount">Mandiri :123456789098</string>
 
