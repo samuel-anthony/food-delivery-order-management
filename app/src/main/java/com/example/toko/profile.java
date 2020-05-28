@@ -33,10 +33,14 @@ public class profile extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         MainActivity mainActivity = (MainActivity) getActivity();
+        mainActivity.setAddressProfileView(rootView.findViewById(R.id.addressProfile));
+        mainActivity.setPhoneProfileView(rootView.findViewById(R.id.phoneProfile));
         JSONObject jsonObject = mainActivity.getDataUser();
         EditText phoneNumberUser = rootView.findViewById(R.id.phoneProfile);
+        EditText addressUser = rootView.findViewById(R.id.addressProfile);
         try {
             phoneNumberUser.setText(String.valueOf(jsonObject.getString("phone_number")));
+            addressUser.setText(String.valueOf(jsonObject.getString("address")));
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -40,4 +40,6 @@ public class ConfigURL {
     public final static String TakeTopUpHistoryById = "http://" + staticIP + "/"+databaseName+"/takeTopUpHistoryById.php/";
     public final static String UpdateStatusTopUpHistory = "http://" + staticIP + "/"+databaseName+"/updateStatusTopUpHistory.php/";
 
+    public final static String UpdateProfileUser = "http://" + staticIP + "/"+databaseName+"/updateProfileUser.php/";
+
 }

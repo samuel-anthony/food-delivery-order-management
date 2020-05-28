@@ -58,11 +58,30 @@
                             android:fontFamily="@font/pacifico"
                             android:id="@+id/phoneProfile"/>
                 </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:orientation="vertical">
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/aturPesananFieldAddress"
+                            android:textSize="20dp"
+                            android:fontFamily="@font/pacifico"/>
+                    <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/round_edit_text_black"
+                            android:fontFamily="@font/pacifico"
+                            android:id="@+id/addressProfile"/>
+                </LinearLayout>
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/ButtonSave"
                         android:layout_marginTop="30dp"
+                        android:onClick="buttonUpdateProfile"
                         android:background="@drawable/round_edit_text_black"/>
                 <Button
                         android:layout_width="match_parent"

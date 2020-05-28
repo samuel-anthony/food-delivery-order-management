@@ -48,7 +48,7 @@ import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
-    View datePickerView;
+    View datePickerView, phoneProfileView,addressProfileView;
     View timePickeView;
     SimpleDateFormat dateFormat;
     LinearLayout listMenu,listOrder;
@@ -183,7 +183,17 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         }
     }
 
+    public void setPhoneProfileView(View phoneProfileView){
+        this.phoneProfileView = phoneProfileView;
+    }
 
+    public void setAddressProfileView(View addressProfileView){
+        this.addressProfileView = addressProfileView;
+    }
+
+    public void buttonUpdateProfile(View view){
+        updateProfile(this);
+    }
     public void showDatePicker(View view){
         String selectedDate = ((TextView)view).getText().toString();
         DialogFragment datePicker = new DatePickerFragment(true,false,selectedDate);
@@ -522,7 +532,71 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         ae.execute();
     }
 
+    public void updateProfile(Context context){
+        class checkToDB extends AsyncTask<Void,Void,String> {
 
+            ProgressDialog loading;
+            Context context;
+            public checkToDB(Context context){
+                this.context = context;
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(context,"menyimpan data...","Please wait...",false,false);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                try {
+                    JSONObject output = new JSONObject(s);
+                    if(output.getString("value").equalsIgnoreCase("1")){
+
+                        String phoneProfile = ((EditText)(phoneProfileView)).getText().toString();
+                        String addressProfile = ((EditText)(addressProfileView)).getText().toString();
+                        data_user.put("phone_number",phoneProfile);
+                        data_user.put("address",addressProfile);
+
+                        Fragment fragment = new HalamanUtama();
+                        FragmentManager fm = getSupportFragmentManager();
+                        FragmentTransaction ft = fm.beginTransaction();
+                        ft.replace(R.id.fragmentMainActivity, fragment);
+                        ft.commit();
+                    }
+                    Toast.makeText(context,output.getString("message"),Toast.LENGTH_LONG).show();
+                }catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            protected String doInBackground(Void... v) {
+                HashMap<String,String> params = new HashMap<>();
+                String phoneProfile = ((EditText)(phoneProfileView)).getText().toString();
+                String addressProfile = ((EditText)(addressProfileView)).getText().toString();
+                String user_id = null;
+                try {
+                    user_id = data_user.getString("user_id");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                params.put("user_id",user_id);
+                params.put("phone_no",phoneProfile);
+                params.put("address",addressProfile);
+                RequestHandler rh = new RequestHandler();
+
+                String res = null;
+                res = rh.sendPostRequest(ConfigURL.UpdateProfileUser, params);
+                return res;
+            }
+        }
+
+        checkToDB ae = new checkToDB(context);
+        ae.execute();
+    }
 
     public void takePrimeOrder(Context context){
         class checkToDB extends AsyncTask<Void,Void,String> {
