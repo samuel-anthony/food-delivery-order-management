@@ -116,6 +116,7 @@ public class LoginRegister extends AppCompatActivity {
                         if(output.getString("is_user").equalsIgnoreCase("1")){
                             mainActivity = new Intent(context, MainActivity.class);
                             mainActivity.putExtra("user_data",s);
+                            mainActivity.putExtra("username",((EditText)findViewById(R.id.usernameLogin)).getText().toString());
                             mEditor.putString(login_id,((EditText)findViewById(R.id.usernameLogin)).getText().toString());
                             mEditor.commit();
                         }
@@ -234,6 +235,7 @@ public class LoginRegister extends AppCompatActivity {
                         if(output.getString("is_user").equalsIgnoreCase("1")){
                             mainActivity = new Intent(context, MainActivity.class);
                             mainActivity.putExtra("user_data",s);
+                            mainActivity.putExtra("username",current_login_id);
                         }
                         else{
                             mainActivity = new Intent(context,adminMainActivity.class);

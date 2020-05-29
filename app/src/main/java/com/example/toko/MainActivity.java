@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     ArrayList<HashMap<String,String>> pesanan = new ArrayList<HashMap<String,String>>();
     ArrayList<Integer> idMenuMaster= new ArrayList<>();
     uiTemplate uiTemplate;
-    String menu ="";
+    String menu ="",usernameString;
     ArrayList<HashMap<String,String>> pesananList = new ArrayList<HashMap<String,String>>();
     private android.content.SharedPreferences mPreferences;
     private SharedPreferences.Editor mEditor;
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         ft.replace(R.id.fragmentMainActivity, fragment);
         ft.commit();
         bundle = getIntent().getExtras();
+        usernameString = bundle.getString("username");
         try {
             data_user = new JSONObject(bundle.getString("user_data"));
         } catch (JSONException e) {
@@ -223,6 +224,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         TextView a = (TextView) datePickerView;
         a.setText(currentDateString);
 
+    }
+
+
+    public String getUsernameString(){
+        return this.usernameString;
     }
 
     public JSONObject getDataUser(){

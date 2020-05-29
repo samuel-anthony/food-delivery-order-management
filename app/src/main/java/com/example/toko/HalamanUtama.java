@@ -24,6 +24,8 @@ public class HalamanUtama extends Fragment {
         MainActivity mainActivity = (MainActivity) getActivity();
         JSONObject jsonObject = mainActivity.getDataUser();
         TextView phoneNumberUser = rootView.findViewById(R.id.userBalance);
+        TextView usernameField = rootView.findViewById(R.id.greetingUsername);
+        usernameField.setText(mainActivity.getUsernameString());
         try {
             phoneNumberUser.setText(String.valueOf(jsonObject.getString("balance")));
         } catch (JSONException e) {
