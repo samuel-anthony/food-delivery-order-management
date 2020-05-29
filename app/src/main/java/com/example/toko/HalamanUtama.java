@@ -15,6 +15,8 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
+
 public class HalamanUtama extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,6 +27,19 @@ public class HalamanUtama extends Fragment {
         JSONObject jsonObject = mainActivity.getDataUser();
         TextView phoneNumberUser = rootView.findViewById(R.id.userBalance);
         TextView usernameField = rootView.findViewById(R.id.greetingUsername);
+        TextView hourField = rootView.findViewById(R.id.greetingHour);
+        Calendar c = Calendar.getInstance();
+        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+
+        if(timeOfDay >= 0 && timeOfDay < 12){
+            hourField.setText("Good Morning, ");
+        }else if(timeOfDay >= 12 && timeOfDay < 16){
+            hourField.setText("Good Afternoon, ");
+        }else if(timeOfDay >= 16 && timeOfDay < 21){
+            hourField.setText("Good Evening, ");
+        }else if(timeOfDay >= 21 && timeOfDay < 24){
+            hourField.setText("Good Night, ");
+        }
         usernameField.setText(mainActivity.getUsernameString());
         try {
             phoneNumberUser.setText(String.valueOf(jsonObject.getString("balance")));
