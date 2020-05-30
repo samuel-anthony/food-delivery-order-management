@@ -82,6 +82,7 @@ public class AdminTopUpHistoryList extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
                                 startActivity(newActivity);
+                                finish();
                             }
                         });
                     }

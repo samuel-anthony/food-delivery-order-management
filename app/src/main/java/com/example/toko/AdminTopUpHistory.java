@@ -122,6 +122,9 @@ public class AdminTopUpHistory extends AppCompatActivity {
                 try {
                     JSONObject output = new JSONObject(s);
                     if(output.getString("value").equalsIgnoreCase("1")){
+                        Intent mainActivity;
+                        mainActivity = new Intent(context, AdminTopUpHistoryList.class);
+                        startActivity(mainActivity);
                         finish();
                     }
                     Toast.makeText(context,output.getString("message"),Toast.LENGTH_LONG).show();
