@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         else if(v == findViewById(R.id.buttonOrderPrime)){
             newActivity = new Intent(this, reorderList.class);
             HashMap<String,String> map = new HashMap<>();
+            pesananList =new ArrayList<HashMap<String,String>>();
             map.put("nama_produk",menu);
             map.put("total",((EditText)findViewById(R.id.quantityOrder)).getText().toString());
             pesananList.add(map);
