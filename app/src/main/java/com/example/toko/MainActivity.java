@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             ArrayList<HashMap<String,String>> pesanan = new ArrayList<HashMap<String,String>>();
             newActivity.putExtra("order",(Serializable) pesanan);
             newActivity.putExtra("user_data",bundle.getString("user_data"));
+            newActivity.putExtra("username",usernameString);
             startActivity(newActivity);
         }
         else if(v == findViewById(R.id.buttonLogOut)){

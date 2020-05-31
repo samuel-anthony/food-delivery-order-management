@@ -55,6 +55,7 @@ public class topUpEntry extends AppCompatActivity {
         try {
             data_user = new JSONObject(bundle.getString("user_data"));
             ((TextView)findViewById(R.id.userBalance)).setText(data_user.getString("balance"));
+            ((TextView)findViewById(R.id.greetingUsername)).setText(bundle.getString("username"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
