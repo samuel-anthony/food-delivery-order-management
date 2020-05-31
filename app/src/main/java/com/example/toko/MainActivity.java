@@ -660,6 +660,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 try {
                     JSONObject output = new JSONObject(s);
                     JSONArray product = output.getJSONArray("products");
+                    menu = "";
                     for(int i = 0; i<product.length() ; i++){
                         JSONObject detil = product.getJSONObject(i);
                         LinearLayout linearLayout = uiTemplate.createLinearLayout(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT,10f,10f,true,false,5,5,5,5);
