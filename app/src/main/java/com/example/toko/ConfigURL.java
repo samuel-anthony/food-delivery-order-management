@@ -1,7 +1,7 @@
 package com.example.toko;
 
 public class ConfigURL {
-    private final static String staticIP = "192.168.0.105";
+    private final static String staticIP = "192.168.43.213";
     private final static String databaseName = "toko";
     public final static String Login = "http://" + staticIP + "/"+databaseName+"/login.php/";
     public final static String LoginByPreference = "http://" + staticIP + "/"+databaseName+"/loginByPreference.php/";

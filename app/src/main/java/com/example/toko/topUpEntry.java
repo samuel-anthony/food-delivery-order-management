@@ -106,7 +106,7 @@ public class topUpEntry extends AppCompatActivity {
             saveContent(this);
         }
         else{
-            Toast.makeText(this,"mohon isi nominal dengan benar dan upload gambar sebagai bukti",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Please fill in the nominal correctly and upload the image as proof",Toast.LENGTH_LONG).show();
         }
     }
 
@@ -123,7 +123,7 @@ public class topUpEntry extends AppCompatActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(context,"menyimpan data...","Please wait...",false,false);
+                loading = ProgressDialog.show(context,"Saving data...","Please wait...",false,false);
             }
 
             @Override
