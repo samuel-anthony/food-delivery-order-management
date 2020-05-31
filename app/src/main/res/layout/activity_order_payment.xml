@@ -27,13 +27,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:orientation="vertical">
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Pilih metode pembayaran"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/pacifico"/>
-                <RadioGroup
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pacifico"
+                    android:text="Choose Payment Method"
+                    android:textSize="20dp" />
+
+            <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/paymentMethod">
@@ -43,12 +45,13 @@
                                 android:text="Cash"
                                 android:id="@+id/paymentCash"
                                 android:fontFamily="@font/pacifico"/>
-                        <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Saldo Virtual Account"
-                                android:id="@+id/paymentVirtual"
-                                android:fontFamily="@font/pacifico"/>
+
+                <RadioButton
+                        android:id="@+id/paymentVirtual"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pacifico"
+                        android:text="Launchbox E-Money" />
                 </RadioGroup>
         </LinearLayout>
         <Button

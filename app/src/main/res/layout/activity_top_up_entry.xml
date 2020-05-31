@@ -121,21 +121,22 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
                                         android:src="@drawable/ic_add_circle_black_24dp"/>
+
                                 <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Upload Gambar"
-                                        android:textSize="20dp"
-                                        android:onClick="showUploadFragment"/>
+                                        android:onClick="showUploadFragment"
+                                        android:text="Upload Image"
+                                        android:textSize="20dp" />
                         </LinearLayout>
 
                         <TextView
+                                android:id="@+id/uploadedPictureStatus"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginVertical="10dp"
                                 android:onClick="showUploadedPicture"
-                                android:id="@+id/uploadedPictureStatus"
-                                android:text="Belum ada bukti yang diunggah" />
+                                android:text="No evidance has been upload yet" />
 
                         <Button
                                 android:layout_width="wrap_content"

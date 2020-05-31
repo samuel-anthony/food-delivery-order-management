@@ -1,10 +1,7 @@
 package com.example.toko;
 
 public class ConfigURL {
-    //ini buat constant yang di pake di db nantinya
-    //ip wifi arenda =  192.168.0.108
-    //laptopPindy = 192.168.100.203
-    private final static String staticIP = "192.168.18.5";
+    private final static String staticIP = "192.168.0.105";
     private final static String databaseName = "toko";
     public final static String Login = "http://" + staticIP + "/"+databaseName+"/login.php/";
     public final static String LoginByPreference = "http://" + staticIP + "/"+databaseName+"/loginByPreference.php/";
