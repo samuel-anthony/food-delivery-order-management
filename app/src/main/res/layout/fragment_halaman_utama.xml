@@ -114,54 +114,80 @@
             </LinearLayout>
         </LinearLayout>
 
-        <TextView
-                android:layout_marginTop="10pt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="10pt"
-                android:text="@string/FavouriteMenu"></TextView>
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:orientation="vertical"
+                android:id="@+id/primeListMenu">
             <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                <ImageView
-                        android:layout_width="75pt"
-                        android:layout_height="50pt"
-                        android:src="@drawable/ayam1"
-                        android:id="@+id/favMenuPicOne"
-                        />
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="ayam blackpepper"
-                        android:id="@+id/favMenuTextOne"
-                        android:gravity="center"/>
-            </LinearLayout>
-            <View android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1" />
+                        android:textSize="20dp"
+                        android:text="@string/OrderPrime"
+                        android:fontFamily="@font/pacifico"/>
 
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                <ImageView
-                        android:layout_width="75pt"
-                        android:layout_height="50pt"
-                        android:src="@drawable/ayam2"
-                        android:id="@+id/favMenuPicTwo"
-                        />
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="ayam BBQ"
-                        android:id="@+id/favMenuTextTwo"
-                        android:gravity="center"/>
+                        android:fontFamily="@font/pacifico"
+                        android:text="@string/PrimeMsg"
+                        android:textSize="15dp" />
             </LinearLayout>
         </LinearLayout>
+
+<!--        <TextView-->
+<!--                android:layout_marginTop="10pt"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="10pt"-->
+<!--                android:text="@string/FavouriteMenu"></TextView>-->
+<!--        <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+<!--            <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+<!--                <ImageView-->
+<!--                        android:layout_width="75pt"-->
+<!--                        android:layout_height="50pt"-->
+<!--                        android:src="@drawable/ayam1"-->
+<!--                        android:id="@+id/favMenuPicOne"-->
+<!--                        />-->
+<!--                <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="ayam blackpepper"-->
+<!--                        android:id="@+id/favMenuTextOne"-->
+<!--                        android:gravity="center"/>-->
+<!--            </LinearLayout>-->
+<!--            <View android:layout_width="0dp"-->
+<!--                    android:layout_height="fill_parent"-->
+<!--                    android:layout_weight="1" />-->
+
+<!--            <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+<!--                <ImageView-->
+<!--                        android:layout_width="75pt"-->
+<!--                        android:layout_height="50pt"-->
+<!--                        android:src="@drawable/ayam2"-->
+<!--                        android:id="@+id/favMenuPicTwo"-->
+<!--                        />-->
+<!--                <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="ayam BBQ"-->
+<!--                        android:id="@+id/favMenuTextTwo"-->
+<!--                        android:gravity="center"/>-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

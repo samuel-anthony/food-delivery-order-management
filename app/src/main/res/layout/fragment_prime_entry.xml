@@ -55,12 +55,13 @@
                                 android:textSize="20dp"
                                 android:text="@string/OrderPrime"
                                 android:fontFamily="@font/pacifico"/>
-                        <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="15dp"
-                                android:text="@string/PrimeMsg"
-                                android:fontFamily="@font/pacifico"/>
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/pacifico"
+                            android:text="@string/PrimeMsg"
+                            android:textSize="15dp" />
                 </LinearLayout>
         </LinearLayout>
         <LinearLayout
