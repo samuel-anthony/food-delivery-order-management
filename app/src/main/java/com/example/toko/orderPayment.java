@@ -66,7 +66,7 @@ public class orderPayment extends AppCompatActivity {
                     saveData(this);
                 }
                 else {
-                    Toast.makeText(this,"Saldo Kamu masih belum cukup",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,"Your balance is still not enough",Toast.LENGTH_LONG).show();
                 }
             }
             else{
@@ -101,7 +101,7 @@ public class orderPayment extends AppCompatActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(context,"menyimpan data...","Please wait...",false,false);
+                loading = ProgressDialog.show(context,"Save Data...","Please wait...",false,false);
             }
 
             @Override
@@ -161,7 +161,7 @@ public class orderPayment extends AppCompatActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(context,"menyimpan data...","Please wait...",false,false);
+                loading = ProgressDialog.show(context,"Saving Data...","Please wait...",false,false);
             }
 
             @Override

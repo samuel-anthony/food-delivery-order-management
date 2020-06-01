@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="com.example.toko">
-
+<!--ini untuk permision nembak xampp localhost-->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -27,7 +27,6 @@
         <activity android:name=".AdminAddMenuCombo" />
         <activity android:name=".AdminAddEditMenuCombo" />
         <activity android:name=".AdminEditMenuProduct" />
-        <activity android:name=".CustomEditText" />
         <activity android:name=".AdminAddMenuProduct" />
         <activity android:name=".AdminAddEditMenuProduct" />
         <activity android:name=".adminMainActivity" />

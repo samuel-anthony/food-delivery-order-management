@@ -338,7 +338,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 startActivity(newActivity);
             }        }
         else{
-            uiTemplate.createPopUpDialog("Missing Required field","Mohon isi semua kolom");
+            uiTemplate.createPopUpDialog("Missing Required field","Please Fill All The Blank!");
         }
     }
     public void checkMenu(Context context){
@@ -532,7 +532,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(context,"menyimpan data...","Please wait...",false,false);
+                loading = ProgressDialog.show(context,"Saving Data...","Please wait...",false,false);
             }
 
             @Override
@@ -584,7 +584,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(context,"menyimpan data...","Please wait...",false,false);
+                loading = ProgressDialog.show(context,"Saving Data...","Please wait...",false,false);
             }
 
             @Override
@@ -650,7 +650,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(context,"menyimpan data...","Please wait...",false,false);
+                loading = ProgressDialog.show(context,"Saving Data...","Please wait...",false,false);
             }
 
             @Override

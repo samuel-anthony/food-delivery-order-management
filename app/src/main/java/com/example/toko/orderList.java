@@ -83,8 +83,8 @@ public class orderList extends AppCompatActivity {
                     }
                     final int finalIndexDelete = indexDelete;
                     new AlertDialog.Builder(orderList.this)
-                            .setTitle("Apa kamu yakin?")
-                            .setMessage("Pesanan kamu akan dihapus dari daftar yang sudah kamu buat")
+                            .setTitle("Are you sure?")
+                            .setMessage("Your order will be deleted from list you made")
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     pesanan.remove(finalIndexDelete);
@@ -154,7 +154,7 @@ public class orderList extends AppCompatActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(context,"menyimpan data...","Please wait...",false,false);
+                loading = ProgressDialog.show(context,"Saving data...","Please wait...",false,false);
             }
 
             @Override

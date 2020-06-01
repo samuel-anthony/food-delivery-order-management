@@ -83,7 +83,7 @@ public class LoginRegister extends AppCompatActivity {
             if(!usernameString.isEmpty() && !phoneString.isEmpty() && !passwordString.isEmpty())
                 checkRegister(this);
             else
-                Toast.makeText(LoginRegister.this,"Mohon masukan semua data",Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginRegister.this,"Please fill all the blank!",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -102,7 +102,7 @@ public class LoginRegister extends AppCompatActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(context,"Mencoba Login...","Please wait...",false,false);
+                loading = ProgressDialog.show(context,"Try To Login...","Please wait...",false,false);
             }
 
             @Override
@@ -164,7 +164,7 @@ public class LoginRegister extends AppCompatActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(context,"Mencoba Login...","Please wait...",false,false);
+                loading = ProgressDialog.show(context,"Try To Create An Account...","Please wait...",false,false);
             }
 
             @Override
