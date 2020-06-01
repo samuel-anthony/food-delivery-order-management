@@ -64,11 +64,11 @@ public class AdminAturPesananUpdateStatus extends AppCompatActivity {
         textView3.setText(pesanan.get("detail_pesanan"));
         textView4.setText(pesanan.get("status"));
 
-        if(pesanan.get("status").equalsIgnoreCase("konfirmasi pembayaran")){
+        if(pesanan.get("status").equalsIgnoreCase("Confirmation Payment by Admin")){
             RelativeLayout somethingToHide = findViewById(R.id.layoutUpdateStatus);
             somethingToHide.setVisibility(View.INVISIBLE);
         }
-        else if(!pesanan.get("status").equalsIgnoreCase("pembayaran ditolak")){
+        else if(!pesanan.get("status").equalsIgnoreCase("Payment Rejected")){
             RelativeLayout somethingToHide = findViewById(R.id.layoutConfirmReject);
             somethingToHide.setVisibility(View.INVISIBLE);
         }
