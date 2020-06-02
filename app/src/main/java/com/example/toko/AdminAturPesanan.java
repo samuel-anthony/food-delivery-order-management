@@ -110,6 +110,7 @@ public class AdminAturPesanan extends AppCompatActivity {
                                     Intent newActivity;
                                     newActivity = new Intent(context, AdminAturPesananUpdateStatus.class);
                                     newActivity.putExtra("order", (Serializable)changeJSONOBjectToMap(detail));
+                                    newActivity.putExtra("isCatering", isCatering);
                                     startActivity(newActivity);
                                     finish();
                                 }

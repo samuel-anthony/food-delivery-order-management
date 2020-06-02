@@ -60,6 +60,10 @@ Dont Have an Account? Create Your Account Now</string>
     <string name="aturPesananFieldName">Name</string>
     <string name="aturPesananFieldAddress">Address</string>
     <string name="aturPesananFieldStatus">Status</string>
+    <string name="aturPesananFieldType">Type Order</string>
+    <string name="aturPesananFieldOrderTime">Delivery Time</string>
+    <string name="aturPesananFieldPayment">Payment Method</string>
+
 
     <string name="cateringNewOrder">New Order</string>
     <string name="cateringNewOrderUnderLine"><u>New Order</u></string>

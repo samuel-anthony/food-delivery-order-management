@@ -22,12 +22,14 @@ import java.util.HashMap;
 public class AdminAturPesananUpdateStatus extends AppCompatActivity {
     HashMap<String,String> pesanan = new HashMap<>();
     Bundle bundle;
+    boolean  isCatering;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_atur_pesanan_update_status);
         bundle = getIntent().getExtras();
         pesanan = (HashMap<String,String>) bundle.getSerializable("order");
+        isCatering = bundle.getBoolean("isCatering");
         parseHashMapToUI();
     }
 
@@ -59,10 +61,14 @@ public class AdminAturPesananUpdateStatus extends AppCompatActivity {
         TextView textView2 = findViewById(R.id.addressPemesan);
         TextView textView3 = findViewById(R.id.listOrderPemesan);
         TextView textView4 = findViewById(R.id.statusOrderPemesan);
+        TextView textView5 = findViewById(R.id.deliveryTimePemesan);
+        TextView textView6 = findViewById(R.id.metodeBayarPemesan);
         textView1.setText(pesanan.get("nama_pemesan"));
         textView2.setText(pesanan.get("alamat"));
         textView3.setText(pesanan.get("detail_pesanan"));
         textView4.setText(pesanan.get("status"));
+        textView5.setText(isCatering ? pesanan.get("tanggal_start_order") + " - " + pesanan.get("tanggal_end_order") + "(" +pesanan.get("waktu_order_dikirim") + ")": "Immediate");
+        textView6.setText(pesanan.get("pembayaran"));
 
         if(pesanan.get("status").equalsIgnoreCase("Confirmation Payment by Admin")){
             RelativeLayout somethingToHide = findViewById(R.id.layoutUpdateStatus);

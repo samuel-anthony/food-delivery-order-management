@@ -130,6 +130,75 @@
                             />
                 </LinearLayout>
 
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="20">
+
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="7"
+                            android:fontFamily="@font/pacifico"
+                            android:text="@string/aturPesananFieldPayment"
+                            android:textColor="@color/black" />
+
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/pacifico"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="5dp"
+                            android:text=":"
+                            />
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="11"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/pacifico"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/metodeBayarPemesan"
+                            />
+                </LinearLayout>
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="20">
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="7"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/pacifico"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/aturPesananFieldOrderTime"
+                            />
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/pacifico"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="5dp"
+                            android:text=":"
+                            />
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="11"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/pacifico"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/deliveryTimePemesan"
+                            />
+                </LinearLayout>
+
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
